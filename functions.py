@@ -26,3 +26,44 @@ def scatterplot(sport, div, df=results_df):
     ax.axvline(x.max(), c='y')
     
     return fig, ax
+
+def timedeltToSec(df, col):
+    for i in len(col)
+    return df['col'].apply(lambda x: x.total_seconds())
+
+def times(df, sport):
+    '''
+    Returns an array of randomly chosen times according to the sport specified.
+    
+    Parameters:
+    df: dataFrame pulling from
+    sport: string: 'Swim', 'Bike', 'Run', or 'Overall'
+    
+    Returns:
+    np.array of length 2434, with time entries in seconds
+    '''
+    l = df[sport]
+    return np.random.choice(df[sport], size=len(l), replace=True)
+
+def bootstrap_statistic(df, sport, samples, statistic):
+    '''
+    Returns an array of bootstrapped statistics
+    
+    Parameters:
+    df: dataFrame pulling from
+    sport: string: 'Swim', 'Bike', 'Run', or 'Overall'
+    samples: int: # of samples desired
+    statistic: string: statistic to calculate on sample i.e. np.median, np.var, np.std
+    '''
+    statistics = []
+    for i in range(samples):
+            samp = times(df, sport)
+            statistics.append(statistic(samp))
+    return statistics
+
+def bootstrap_percentile(df, sport, samples, percent, statistic=np.percentile):
+    statistics = []
+    for i in range(samples):
+        samp = times(df, sport)
+        statistics.append(statistic(samp, percent))
+    return statistics
