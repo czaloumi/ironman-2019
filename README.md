@@ -22,7 +22,6 @@ Kaggle has a dataset that includes the 2019 Ironman World Championship Results b
 
 After importing my data using Spark, I quickly converted my data to pandas and using timecleaning.py, converted all timedate data types into minutes. I continued cleaning my data by eliminating athletes who did not finish race events and were therefore disqualified.
 
-'''
 
     class TimeDateToMinutes(object):
         '''
@@ -44,9 +43,7 @@ After importing my data using Spark, I quickly converted my data to pandas and u
         def _seconds(self):
             '''
             Converts df column from timedelta dtype to seconds
-            object1.df['Swim'] = object1.df['Swim'].apply(lambda x: x.total_seconds())
             '''
-            #pdb.set_trace()
             self.df[self.col1] = self.df[self.col1].apply(lambda x: x.total_seconds())
     
         def _minutes(self):
@@ -54,7 +51,7 @@ After importing my data using Spark, I quickly converted my data to pandas and u
             Converts df column from seconds to minutes
             '''
             self.df[self.col1] = self.df[self.col1].divide(60)
-'''
+
 
 My first question was, do pro athletes have significantly different event split times based on their gender? Below are scatter plots for pro athletes on the left, and all amateurs on the right, by event type.
 
@@ -72,15 +69,29 @@ Null hypothesis: men and women mean racetimes are the same.
 
 Alternative hypothesis: men and women mean racetimes are different, meaning one gender races faster than the other.
 
+    t_statistic, pvalue = ttest_ind(male_pro['Overall'], fem_pro['Overall'], equal_var=False)
+
 Pro t-test statistic: -7.76, Pro p-value: 5.156855215220441e-10
 
 The large, negative t-test statistic value (-7.76) means there is a very big difference between the gender's mean overall times. The very small p-value allows us to reject the null hypothesis in favor of the alternative hypothesis. Therefore we can reason that pro male triathletes, on average, race faster than pro women triathletes. We can run a similar test on the amateur gender groups:
+
+    t_statistic, pvalue = ttest_ind(male_agegroups['Overall'], fem_agegroups['Overall'], equal_var=False)
 
 Amateur t-test statistic: -13.63, Amateur p-value: 3.889330523969423e-39
 
 The amateur race times give us stronger reason to reject the null hypothesis and state that on average, male amateur triathletes compete faster than female amateur triathletes.
 
+Next I plot correlation heatmaps using the seaborn package to see what correlation split times have with division ranking. Again, we have the pro division on the left, and amateurs on the right.
 
+![proheat](images/heatmap1.png) ![amateurheat](images/heatmap2_.png)
+
+Swim times have a much lower correlation in the pro division where bike and run times are highly correlated with overall finish times. This has to do with the total distance of the event, 226.31km, and how that's divided amongst the three sports. Swim accounts for 1.7% of the entire race, bike 79.6%, and run is 18.7%. Meaning bike and run times dominate the overall time.
+
+Even more interesting is the correlation amongst event times and division rank: T2 and run times have the greatest correlations of all the events with how pros rank. This is important to note: pro athletes need to practice their transition from bike to run and need to perform best in running to rank higher. 
+
+In the amateur heatmap, we can see swim has the lowest correlation with ranking than the other event times. However both transitions for amateurs are very important to practice as they hold the same correlation as the run event with rank.
+
+Both heatmaps include a Bool_Gender column where female athletes result in True and male in False. the negative correlation we see in both heatmaps supports evidence from the previous scatter plots and t-tests that female athletes race slower and rank lower than male athletes, on average.
 
 
 ## References
