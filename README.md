@@ -58,11 +58,14 @@ My first question was, do pro athletes have significantly different event split 
 <img src="images/image1.png" alt="raw" width=50% height=50%/><img src="images/image1_.png" alt="raw" width=50% height=50%/>
 <br>
 
-![probike](images/image2.png) ![amateurbike](images/image2_.png)
+<img src="images/image2.png" alt="raw" width=50% height=50%/><img src="images/image2_.png" alt="raw" width=50% height=50%/>
+<br>
 
-![prorun](images/image3.png) ![amateurbike](images/image3_.png)
+<img src="images/image3.png" alt="raw" width=50% height=50%/><img src="images/image3_.png" alt="raw" width=50% height=50%/>
+<br>
 
-![prooverall](images/image4.png) ![amateuroverall](images/image4_.png)
+<img src="images/image4.png" alt="raw" width=50% height=50%/><img src="images/image4_.png" alt="raw" width=50% height=50%/>
+<br>
 
 On average, do men race faster than women? Eyeing the scatter plots above, it would certainly seem so. To be certain, I conducted a two-sample, unpaired t-test on the pros and amateurs. My t-test states a null and alternative hypothesis as follows:
 
