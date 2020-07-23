@@ -248,9 +248,9 @@ The following code plots the amateur event times with the pro 95% confidence int
 
 To save space, we'll only look at the percentages of amateurs who race like pros for the rest of the sports.
 
-<center>
+
 | Event | Gender | % Racing like Pros |
-| :----: | :----: | :----: |
+| ---- | :----: | ----: |
 | Swim | Female | 48.52% |
 | Swim | Male | 8.28% |
 | Bike | Female | 11.69% |
@@ -259,7 +259,7 @@ To save space, we'll only look at the percentages of amateurs who race like pros
 | Run | Male | 37.09% |
 | Overall | Female | 36.47% |
 | Overall | Male | 2.74% |
-</center>
+
 
 Now we'll look at the top performing (10th percentile) amateurs and map them next to the pros 90th percentiles (with 95% confidence of course!).
 
