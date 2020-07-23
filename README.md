@@ -32,6 +32,20 @@ My first question was, do pro athletes have significantly different event split 
 
 ![prooverall](images/image4.png) ![amateuroverall](images/image4_.png)
 
+On average, do men race faster than women? Eyeing the scatter plots above, it would certainly seem so. To be certain, I conducted a two-sample, unpaired t-test on the pros and amateurs. My t-test states a null and alternative hypothesis as follows:
+
+Null hypothesis: men and women mean racetimes are the same.
+
+Alternative hypothesis: men and women mean racetimes are different, meaning one gender races faster than the other, on average.
+
+Pro t-test statistic: -7.76     Pro p-value: 5.156855215220441e-10
+
+The large, negative t-test statistic value (-7.76) means there is a very big difference between the gender's mean overall times. The very small p-value allows us to reject the null hypothesis in favor of the alternative hypothesis. Therefore we can reason that pro male triathletes, on average, race faster than pro women triathletes. We can run a similar test on the amateur gender groups:
+
+Amateur t-test statistic: -13.63     Amateur p-value: 3.889330523969423e-39
+
+The amateur race times give us stronger reason to reject the null hypothesis and state that on average, male amateur triathletes compete faster than female amateur triathletes.
+
 ## References
 Dataset: https://www.kaggle.com/andyesi/2019-ironman-world-championship-results
 
