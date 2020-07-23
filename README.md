@@ -308,6 +308,11 @@ Now we'll look at the top performing (10th percentile) amateurs and map them nex
 
 ![amateurswim10thpro90th](images/amateur10thoverallpro90th.png)
 
+The top agegroupers (amateurs) are listed here by gender:
+
+<img src="images/sponsorthesemen.png" alt="raw" width=100% height=75%/><img src="images/sponsorthesewomen.png" alt="raw" width=100% height=75%/>
+<br>
+
 
 ## References
 Dataset: https://www.kaggle.com/andyesi/2019-ironman-world-championship-results
