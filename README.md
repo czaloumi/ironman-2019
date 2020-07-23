@@ -55,13 +55,17 @@ After importing my data using Spark, I quickly converted my data to pandas and u
 
 My first question was, do pro athletes have significantly different event split times based on their gender? Below are scatter plots for pro athletes on the left, and all amateurs on the right, by event type.
 
-![proswim](images/image1.png) ![amateurswim](images/image1_.png)
+<img src="images/image1.png" alt="raw" width=50% height=50%/><img src="images/image1_.png" alt="raw" width=50% height=50%/>
+<br>
 
-![probike](images/image2.png) ![amateurbike](images/image2_.png)
+<img src="images/image2.png" alt="raw" width=50% height=50%/><img src="images/image2_.png" alt="raw" width=50% height=50%/>
+<br>
 
-![prorun](images/image3.png) ![amateurbike](images/image3_.png)
+<img src="images/image3.png" alt="raw" width=50% height=50%/><img src="images/image3_.png" alt="raw" width=50% height=50%/>
+<br>
 
-![prooverall](images/image4.png) ![amateuroverall](images/image4_.png)
+<img src="images/image4.png" alt="raw" width=50% height=50%/><img src="images/image4_.png" alt="raw" width=50% height=50%/>
+<br>
 
 On average, do men race faster than women? Eyeing the scatter plots above, it would certainly seem so. To be certain, I conducted a two-sample, unpaired t-test on the pros and amateurs. My t-test states a null and alternative hypothesis as follows:
 
@@ -304,12 +308,10 @@ Now we'll look at the top performing (10th percentile) amateurs and map them nex
 
 ![amateurswim10thpro90th](images/amateur10thoverallpro90th.png)
 
+The top agegroupers (amateurs) are listed here by gender. After searching, we can see that a lot of these athletes were top competitor and pro at one point, or hold agegroup championships already!
+
+<img src="images/sponsorthesewomen.png" alt="raw" width=25% height=25%/><img src="images/sponsorthesemen.png" alt="raw" width=25% height=25%/>
+<br>
 
 ## References
 Dataset: https://www.kaggle.com/andyesi/2019-ironman-world-championship-results
-
-
-- - -
-* notes *
--who is interested in this data?
--sponsors for up and coming athletes? sponsoring high ranking amateurs => more exposure and approachability
