@@ -310,7 +310,7 @@ Now we'll look at the top performing (10th percentile) amateurs and map them nex
 
 The top agegroupers (amateurs) are listed here by gender:
 
-<img src="images/sponsorthesemen.png" alt="raw" width=100% height=75%/><img src="images/sponsorthesewomen.png" alt="raw" width=100% height=75%/>
+<img src="images/sponsorthesemen.png" alt="raw" width=50% height=50%/><img src="images/sponsorthesewomen.png" alt="raw" width=50% height=50%/>
 <br>
 
 
