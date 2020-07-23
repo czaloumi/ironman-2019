@@ -241,26 +241,60 @@ The following code plots the amateur event times with the pro 95% confidence int
 
 ![amateurswimpro90th](images/amateurswimpro90th.png)
 
-Percent of male amateurs who swim like pros: 8.28%
-
-Percent of female amateurs who swim like pros: 48.52%
-
 To save space, we'll only look at the percentages of amateurs who race like pros for the rest of the sports.
 
 
-Percent of male amateurs who bike like pros: 1.74%
+    | Event | Gender | % Racing like Pros |
+    | --- | --- | --- |
+    | Swim | Female | 48.52% |
+    | Swim | Male | 8.28% |
+    | Bike | Female | 11.69% |
+    | Bike | Male | 1.74% |
+    | Run | Female | 72.43% |
+    | Run | Male | 37.09% |
+    | Overall | Female | 36.47% |
+    | Overall | Male | 2.74% |
 
-Percent of female amateurs who bike like pros: 11.69%
 
+Now we'll look at the top performing (10th percentile) amateurs and map them next to the pros 95% confidence interval 90th percentiles.
 
-Percent of male amateurs who run like pros: 37.09%
+    def plot_cis(sport, df1=fem_agegroups, df2=male_agegroups, df3=fem_pro, df4=male_pro):    
+        # Bootstrap amateur 10th percentiles
+        fem_10 = bootstrap_percentile(df1, sport, 1000, 10)
+        male_10 = bootstrap_percentile(df2, sport, 1000, 10)
 
-Percent of female amateurs who run like pros: 72.43%
+        # Say it with confidence
+        left_f10 = np.percentile(fem_10, 2.5)
+        right_f10 = np.percentile(fem_10, 97.5)
+        left_m10 = np.percentile(male_10, 2.5)
+        right_m10 = np.percentile(male_10, 97.5)
 
+        # Generate pro bootstrap 90th percentiles
+        fem_90 = bootstrap_percentile(df3, sport, 1000, 90)
+        male_90 = bootstrap_percentile(df4, sport, 1000, 90)
 
-Percent of male amateurs who race overall like pros: 2.74%
+        # Say it with confidence
+        left_f90 = np.percentile(fem_90, 2.5)
+        right_f90 = np.percentile(fem_90, 97.5)
+        left_m90 = np.percentile(male_90, 2.5)
+        right_m90 = np.percentile(male_90, 97.5)
 
-Percent of female amateurs who race overall like pros: 36.47%
+        # Plot it
+        fig, ax = plt.subplots(1, figsize=(12,4))
+
+        ax.hist(male_10, bins=100, density=True, color='grey', alpha=0.75, label=f'Male Amateur {sport} 10 Percentiles')
+        ax.hist(fem_10, bins=100, density=True, color='pink', alpha=0.75, label=f'Female Amateur {sport} 10 Percentiles')
+        ax.axvline(left_f90, c='red', linestyle="--", label='Female Pro 90 Percentile')
+        ax.axvline(right_f90, c='red', linestyle="--")
+        ax.axvline(left_m90, c='black', linestyle="--", label='Male Pro 90 Percentile')
+        ax.axvline(right_m90, c='black', linestyle="--")
+        ax.legend()
+
+        ax.set_title(f'How does the {sport} Amateur 10th Percentile Compare to the Pro 90th Percentile?', fontsize=20)
+        ax.set_xlabel(f'{sport} Time (seconds)', fontsize=15)
+
+        return fig, ax
+
 
 ## References
 Dataset: https://www.kaggle.com/andyesi/2019-ironman-world-championship-results
