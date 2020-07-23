@@ -94,7 +94,7 @@ T2 and run times have the greatest correlations of all the events with how pros 
 
 In the amateur heatmap, we can see swim has the same correlation with division rank as in the pro's heatmap. This low correlation leads us to assume that swim times do not have a big affect on how an athlete ranks. Therefore they should practice the other sports and transitions if they want to rank higher, not swimming since it so lowly correlates with division rank. However both transitions for amateurs are very important to practice as they hold the same correlation as the run event with rank.
 
-Both heatmaps include a Bool_Gender column where female athletes result in True and male in False. the negative correlation we see in both heatmaps supports evidence from the previous scatter plots and t-tests that female athletes race slower and rank lower than male athletes, on average.
+Both heatmaps include a Bool_Gender column where female athletes result in True and male in False. The negative correlation we see in both heatmaps supports evidence from the previous scatter plots and t-tests that female athletes race slower and rank lower than male athletes, on average.
 
 # Up & Coming Athletes
 
@@ -249,7 +249,7 @@ The following code plots the amateur event times with the pro 95% confidence int
 To save space, we'll only look at the percentages of amateurs who race like pros for the rest of the sports.
 
 | Event | Gender | % Racing like Pros |
-| ---- | ---- | ---- |
+| :----: | :----: | :----: |
 | Swim | Female | 48.52% |
 | Swim | Male | 8.28% |
 | Bike | Female | 11.69% |
@@ -258,7 +258,7 @@ To save space, we'll only look at the percentages of amateurs who race like pros
 | Run | Male | 37.09% |
 | Overall | Female | 36.47% |
 | Overall | Male | 2.74% |
-
+</center>
 
 Now we'll look at the top performing (10th percentile) amateurs and map them next to the pros 90th percentiles (with 95% confidence of course!).
 
