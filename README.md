@@ -87,7 +87,8 @@ The amateur race times give us stronger reason to reject the null hypothesis and
 
 Next I plotted correlation heatmaps using the seaborn package to see what correlation split times have with division ranking. Again, we have the pro division on the left, and amateurs on the right.
 
-![proheat](images/heatmap2.png) ![amateurheat](images/heatmap1.png)
+<img src="images/heatmap2.png" alt="raw" width=50% height=50%/><img src="images/heatmap1.png" alt="raw" width=50% height=50%/>
+<br>
 
 T2 and run times have the greatest correlations of all the events with how pros rank. This is important to note: pro athletes need to practice their transition from bike to running as well as perform their best in running to rank higher. 
 
