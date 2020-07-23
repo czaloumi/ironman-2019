@@ -248,6 +248,7 @@ The following code plots the amateur event times with the pro 95% confidence int
 
 To save space, we'll only look at the percentages of amateurs who race like pros for the rest of the sports.
 
+<center>
 | Event | Gender | % Racing like Pros |
 | :----: | :----: | :----: |
 | Swim | Female | 48.52% |
