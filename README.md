@@ -81,19 +81,19 @@ Amateur t-test statistic: -13.63, Amateur p-value: 3.889330523969423e-39
 
 The amateur race times give us stronger reason to reject the null hypothesis and state that on average, male amateur triathletes compete faster than female amateur triathletes.
 
-Next I plot correlation heatmaps using the seaborn package to see what correlation split times have with division ranking. Again, we have the pro division on the left, and amateurs on the right.
+Next I plotted correlation heatmaps using the seaborn package to see what correlation split times have with division ranking. Again, we have the pro division on the left, and amateurs on the right.
 
 ![proheat](images/heatmap2.png) ![amateurheat](images/heatmap1.png)
 
-T2 and run times have the greatest correlations of all the events with how pros rank. This is important to note: pro athletes need to practice their transition from bike to running to shave time off T2 as well as perform their best in running to rank higher. 
+T2 and run times have the greatest correlations of all the events with how pros rank. This is important to note: pro athletes need to practice their transition from bike to running as well as perform their best in running to rank higher. 
 
-In the amateur heatmap, we can see swim has the lowest correlation with ranking than the other event times. However both transitions for amateurs are very important to practice as they hold the same correlation as the run event with rank.
+In the amateur heatmap, we can see swim has the same correlation with division rank as in the pro's heatmap. This low correlation leads us to assume that swim times do not have a big affect on how an athlete ranks. Therefore they should practice the other sports and transitions if they want to rank higher, not swimming since it so lowly correlates with division rank. However both transitions for amateurs are very important to practice as they hold the same correlation as the run event with rank.
 
 Both heatmaps include a Bool_Gender column where female athletes result in True and male in False. the negative correlation we see in both heatmaps supports evidence from the previous scatter plots and t-tests that female athletes race slower and rank lower than male athletes, on average.
 
 # Up & Coming Athletes
 
-Of the amateurs, who's racing as fast as the pros and which amateur athletes should sponsors sign? To answer this, I bootstrapped the 90th percentile and used a 95% confidence interval to determine the "slower" pros in event times. The following code returns a random array of event times, bootstraps any statistic provided by numpy, and then plots the pro 90th percentiles and 95% confidence intervals.
+Of the amateurs, who's racing as fast as the pros and which amateur athletes should sponsors sign? To answer this, I bootstrapped the 90th percentile of pros in both genders and used a 95% confidence interval to determine the "slower" pros in event times. The following code returns a random array of event times, bootstraps any statistic provided by numpy, and then plots the pro 90th percentiles with 95% confidence intervals.
 
     def times(df, sport):
         '''
@@ -176,23 +176,91 @@ Of the amateurs, who's racing as fast as the pros and which amateur athletes sho
 ![proswim90thpercentile](images/proswim90th.png)
 
 Female Pro Swim Times Bootstrap Confidence Interval for Population 90th Percentile (minutes): [62.75, 75.4]
+
 Male Pro Swim Times Bootstrap Confidence Interval for Population 90th Percentile (minutes): [52.38, 57.83]
 
 ![probike90thpercentile](images/probike90th.png)
 
 Female Pro Bike Times Bootstrap Confidence Interval for Population 90th Percentile (minutes): [310.11, 333.25]
+
 Male Pro Bike Times Bootstrap Confidence Interval for Population 90th Percentile (minutes): [273.95, 283.17]
 
 ![prorun90thpercentile](images/prorun90th.png)
 
 Female Pro Run Times Bootstrap Confidence Interval for Population 90th Percentile (minutes): [211.39, 297.6]
+
 Male Pro Run Times Bootstrap Confidence Interval for Population 90th Percentile (minutes): [193.28, 221.37]
 
 ![prooverall90thpercentile](images/prooverall90th.png)
 
 Female Pro Overall Times Bootstrap Confidence Interval for Population 90th Percentile (minutes): [585.6, 688.37]
+
 Male Pro Overall Times Bootstrap Confidence Interval for Population 90th Percentile (minutes): [521.32, 548.9]
 
+
+The following code plots the amateur event times with the pro 95% confidence interval for their 90th percentile so we can look at what amateurs are racing like the slower pros.
+
+    def plot_amateur_proci(sport, df1=fem_agegroups, df2=male_agegroups, df3=fem_pro, df4=male_pro):
+        # Convert Amateur times to minutes
+        f_agegroups_ = df1[sport] / 60
+        m_agegroups_ = df2[sport] / 60
+
+        # Generate pro bootstrap 90th percentiles
+        fem_90p = bootstrap_percentile(df3, sport, 1000, 90)
+        male_90p = bootstrap_percentile(df4, sport, 1000, 90)
+
+        # Say it with confidence
+        left_f90p = np.percentile(fem_90p, 2.5) / 60
+        right_f90p = np.percentile(fem_90p, 97.5) / 60
+
+        left_m90p = np.percentile(male_90p, 2.5) / 60
+        right_m90p = np.percentile(male_90p, 97.5) /60
+
+        # Plot it
+        fig, ax = plt.subplots(1, figsize=(12,4))
+
+        ax.hist(m_agegroups_, bins=100, density=True, color='grey', alpha=0.75, label=f'Male Amateur {sport} Times')
+        ax.hist(f_agegroups_, bins=100, density=True, color='pink', alpha=0.75, label=f'Female Amateur {sport} Times')
+        ax.axvline(left_f90p, c='red', linestyle="--", label='Female Pro 90 Percentile')
+        ax.axvline(right_f90p, c='red', linestyle="--")
+        ax.axvline(left_m90p, c='black', linestyle="--", label='Male Pro 90 Percentile')
+        ax.axvline(right_m90p, c='black', linestyle="--")
+        ax.legend()
+
+        ax.set_title(f'How do Amateurs Compare to the Pro {sport} 90th Percentile?', fontsize=20)
+        ax.set_xlabel(f'{sport} Time (minutes)', fontsize=15)
+
+        m_ = m_agegroups_[m_agegroups_ <= right_m90p]
+        f_ = f_agegroups_[f_agegroups_ <= right_f90p]
+        mam_pros_ = round((len(m_) / len(m_agegroups_))*100, 2)
+        fam_pros_ = round((len(f_) / len(f_agegroups_))*100, 2)
+        print(f'Percent of male amateurs who {sport} like pros: {mam_pros_}%')
+        print(f'Percent of female amateurs who {sport} like pros: {fam_pros_}%')
+
+        return fig, ax
+
+![amateurswimpro90th](images/amateurswimpro90th.png)
+
+Percent of male amateurs who swim like pros: 8.28%
+
+Percent of female amateurs who swim like pros: 48.52%
+
+To save space, we'll only look at the percentages of amateurs who race like pros for the rest of the sports.
+
+
+Percent of male amateurs who bike like pros: 1.74%
+
+Percent of female amateurs who bike like pros: 11.69%
+
+
+Percent of male amateurs who run like pros: 37.09%
+
+Percent of female amateurs who run like pros: 72.43%
+
+
+Percent of male amateurs who race overall like pros: 2.74%
+
+Percent of female amateurs who race overall like pros: 36.47%
 
 ## References
 Dataset: https://www.kaggle.com/andyesi/2019-ironman-world-championship-results
