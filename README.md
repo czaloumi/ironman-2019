@@ -180,27 +180,23 @@ Of the amateurs, who's racing as fast as the pros and which amateur athletes sho
 
 ![proswim90thpercentile](images/proswim90th.png)
 
-Female Pro Swim Times Bootstrap Confidence Interval for Population 90th Percentile (minutes): [62.75, 75.4]
-
-Male Pro Swim Times Bootstrap Confidence Interval for Population 90th Percentile (minutes): [52.38, 57.83]
-
 ![probike90thpercentile](images/probike90th.png)
-
-Female Pro Bike Times Bootstrap Confidence Interval for Population 90th Percentile (minutes): [310.11, 333.25]
-
-Male Pro Bike Times Bootstrap Confidence Interval for Population 90th Percentile (minutes): [273.95, 283.17]
 
 ![prorun90thpercentile](images/prorun90th.png)
 
-Female Pro Run Times Bootstrap Confidence Interval for Population 90th Percentile (minutes): [211.39, 297.6]
-
-Male Pro Run Times Bootstrap Confidence Interval for Population 90th Percentile (minutes): [193.28, 221.37]
-
 ![prooverall90thpercentile](images/prooverall90th.png)
 
-Female Pro Overall Times Bootstrap Confidence Interval for Population 90th Percentile (minutes): [585.6, 688.37]
 
-Male Pro Overall Times Bootstrap Confidence Interval for Population 90th Percentile (minutes): [521.32, 548.9]
+| Event | Gender | 95% CI on 90th Percentile (min) |
+| ---- | ---- | ---- |
+| Swim | Female | [62.75, 75.4] |
+| Swim | Male | [52.38, 57.83] |
+| Bike | Female | [310.11, 333.25] |
+| Bike | Male | [273.95, 283.17] |
+| Run | Female | [211.39, 297.6] |
+| Run | Male | [193.28, 221.37] |
+| Overall | Female | [585.6, 688.37] |
+| Overall | Male | [521.32, 548.9] |
 
 
 The following code plots the amateur event times with the pro 95% confidence interval for their 90th percentile so we can look at what amateurs are racing like the slower pros.
@@ -244,13 +240,12 @@ The following code plots the amateur event times with the pro 95% confidence int
 
         return fig, ax
 
-![amateurswimpro90th](images/amateurswimpro90th.png)
+![amateuroverallpro90th](images/amateursoverallpro90th.png)
 
-To save space, we'll only look at the percentages of amateurs who race like pros for the rest of the sports.
-
+To save space, we'll only look at the percentages of amateurs who race like pros for the rest of the events.
 
 | Event | Gender | % Racing like Pros |
-| ---- | :----: | ----: |
+| ---- | ---- | ---- |
 | Swim | Female | 48.52% |
 | Swim | Male | 8.28% |
 | Bike | Female | 11.69% |
