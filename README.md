@@ -23,37 +23,37 @@ Kaggle has a dataset that includes the 2019 Ironman World Championship Results b
 After importing my data using Spark, I quickly converted my data to pandas and using timecleaning.py, converted all timedate data types into minutes. I continued cleaning my data by eliminating athletes who did not finish race events and were therefore disqualified.
 
 '''
-class TimeDateToMinutes(object):
-    '''
-    Converts timedate columns to timedelta to seconds to minutes.
-    '''
-    
-    def __init__(self, df, col1):
-        self.df = df
-        self.col1 = col1
-        self._timedelt()
-        self._seconds()
-        self._minutes()
+
+    class TimeDateToMinutes(object):
+        '''
+        Converts timedate columns to timedelta to seconds to minutes.
+        '''
+        def __init__(self, df, col1):
+            self.df = df
+            self.col1 = col1
+            self._timedelt()
+            self._seconds()
+            self._minutes()
         
-    def _timedelt(self):
-        '''
-        Convert cols to timedelta with units in seconds (timedelta puts in ns)
-        '''
-        self.df[[self.col1]] = self.df[self.col1].apply(pd.to_timedelta, unit='s')
+        def _timedelt(self):
+            '''
+            Convert cols to timedelta with units in seconds (timedelta puts in ns)
+            '''
+            self.df[[self.col1]] = self.df[self.col1].apply(pd.to_timedelta, unit='s')
     
-    def _seconds(self):
-        '''
-        Converts df column from timedelta dtype to seconds
-        object1.df['Swim'] = object1.df['Swim'].apply(lambda x: x.total_seconds())
-        '''
-        #pdb.set_trace()
-        self.df[self.col1] = self.df[self.col1].apply(lambda x: x.total_seconds())
+        def _seconds(self):
+            '''
+            Converts df column from timedelta dtype to seconds
+            object1.df['Swim'] = object1.df['Swim'].apply(lambda x: x.total_seconds())
+            '''
+            #pdb.set_trace()
+            self.df[self.col1] = self.df[self.col1].apply(lambda x: x.total_seconds())
     
-    def _minutes(self):
-        '''
-        Converts df column from seconds to minutes
-        '''
-        self.df[self.col1] = self.df[self.col1].divide(60)
+        def _minutes(self):
+            '''
+            Converts df column from seconds to minutes
+            '''
+            self.df[self.col1] = self.df[self.col1].divide(60)
 '''
 
 My first question was, do pro athletes have significantly different event split times based on their gender? Below are scatter plots for pro athletes on the left, and all amateurs on the right, by event type.
