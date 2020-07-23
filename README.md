@@ -83,11 +83,9 @@ The amateur race times give us stronger reason to reject the null hypothesis and
 
 Next I plot correlation heatmaps using the seaborn package to see what correlation split times have with division ranking. Again, we have the pro division on the left, and amateurs on the right.
 
-![proheat](images/heatmap1.png) ![amateurheat](images/heatmap2_.png)
+![proheat](images/heatmap2.png) ![amateurheat](images/heatmap1.png)
 
-Swim times have a much lower correlation in the pro division where bike and run times are highly correlated with overall finish times. This has to do with the total distance of the event, 226.31km, and how that's divided amongst the three sports. Swim accounts for 1.7% of the entire race, bike 79.6%, and run is 18.7%. Meaning bike and run times dominate the overall time.
-
-Even more interesting is the correlation amongst event times and division rank: T2 and run times have the greatest correlations of all the events with how pros rank. This is important to note: pro athletes need to practice their transition from bike to run and need to perform best in running to rank higher. 
+T2 and run times have the greatest correlations of all the events with how pros rank. This is important to note: pro athletes need to practice their transition from bike to running to shave time off T2 as well as perform their best in running to rank higher. 
 
 In the amateur heatmap, we can see swim has the lowest correlation with ranking than the other event times. However both transitions for amateurs are very important to practice as they hold the same correlation as the run event with rank.
 
