@@ -55,7 +55,8 @@ After importing my data using Spark, I quickly converted my data to pandas and u
 
 My first question was, do pro athletes have significantly different event split times based on their gender? Below are scatter plots for pro athletes on the left, and all amateurs on the right, by event type.
 
-![proswim](images/image1.png) ![amateurswim](images/image1_.png)
+<img src="images/image1.png" alt="raw" width="250" height='75'/><img src="images/image1_.png" alt="raw" width="250" height='75'/>
+<br>
 
 ![probike](images/image2.png) ![amateurbike](images/image2_.png)
 
