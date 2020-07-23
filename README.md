@@ -313,5 +313,17 @@ The top agegroupers (amateurs) are listed here by gender. After searching, we ca
 <img src="images/sponsorthesewomen.png" alt="raw" width=25% height=25%/><img src="images/sponsorthesemen.png" alt="raw" width=25% height=25%/>
 <br>
 
+# What type of athlete performs well in an Ironman Traithlon?
+
+To answer this question, I standardized each event time (swim, bike, run, overall, T1, T2) by subtracting each respective events column's mean, and dividing by the event column's standard deviation. Using the consistency function below, I defined a "consistency factor" to illustrate how consistently well, or poorly, athletes' event times are.
+
+    def consistency(row):
+        '''
+        Returns difference from standardized mean
+        '''
+        return max(row.Norm_Swim, row.Norm_Run, row.Norm_Bike) - min(row.Norm_Swim, row.Norm_Run, row.Norm_Bike)
+
+![consistency](images/consistency.png)
+
 ## References
 Dataset: https://www.kaggle.com/andyesi/2019-ironman-world-championship-results
