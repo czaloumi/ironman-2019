@@ -257,7 +257,7 @@ To save space, we'll only look at the percentages of amateurs who race like pros
     | Overall | Male | 2.74% |
 
 
-Now we'll look at the top performing (10th percentile) amateurs and map them next to the pros 95% confidence interval 90th percentiles.
+Now we'll look at the top performing (10th percentile) amateurs and map them next to the pros 90th percentiles (with 95% confidence of course!).
 
     def plot_cis(sport, df1=fem_agegroups, df2=male_agegroups, df3=fem_pro, df4=male_pro):    
         # Bootstrap amateur 10th percentiles
@@ -295,6 +295,14 @@ Now we'll look at the top performing (10th percentile) amateurs and map them nex
         ax.set_xlabel(f'{sport} Time (seconds)', fontsize=15)
 
         return fig, ax
+
+![amateurswim10thpro90th](images/amateur10thswimpro90th.png)
+
+![amateurswim10thpro90th](images/amateur10thbikepro90th.png)
+
+![amateurswim10thpro90th](images/amateur10thrunpro90th.png)
+
+![amateurswim10thpro90th](images/amateur10thoverallpro90th.png)
 
 
 ## References
