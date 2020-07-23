@@ -23,8 +23,6 @@ Kaggle has a dataset that includes the 2019 Ironman World Championship Results b
 After importing my data using Spark, I quickly converted my data to pandas. I cleaned my data by eliminating athletes who did not finish race events and were therefore disqualified. My first question was, do pro athletes have significantly different event split times based on their gender? 
 * * insert hyp test * *
 
-![alt-text-1](images/ProSwim-by-DivisionRank.png) ![alt-text-2](images/Swim-by-DivisionRank.png)
-
 ## References
 Dataset: https://www.kaggle.com/andyesi/2019-ironman-world-championship-results
 
