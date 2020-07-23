@@ -6,7 +6,7 @@
 #### Galvanize DSI Capstone 1
 *Last update: 7/20/2020*
 
-![title](images/WCFinish-r.png)
+![title](images/WCFinish-r.jpeg)
 
 # Background & Motivation
 
