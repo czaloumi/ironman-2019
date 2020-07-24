@@ -102,11 +102,16 @@ Next I plotted correlation heatmaps using the seaborn package to see what correl
 <img src="images/heatmap2.png" alt="raw" width=50% height=50%/><img src="images/heatmap1.png" alt="raw" width=50% height=50%/>
 <br>
 
-T2 and run times have the greatest correlations of all the events with how pros rank. This is important to note: pro athletes need to practice their transition from bike to running as well as perform their best in running to rank higher. 
+  * T2 and run times have the greatest correlations of all the events with how pros rank.
+  * Therefore pro athletes need to practice their transition from bike to running as well as perform their best in running to rank higher. 
 
-In the amateur heatmap, we can see swim has the same correlation with division rank as in the pro's heatmap. This low correlation leads us to assume that swim times do not have a big affect on how an athlete ranks. Therefore they should practice the other sports and transitions if they want to rank higher, not swimming since it so lowly correlates with division rank. However both transitions for amateurs are very important to practice as they hold the same correlation as the run event with rank.
 
-Both heatmaps include a Bool_Gender column where female athletes result in True and male in False. The negative correlation we see in both heatmaps supports evidence from the previous scatter plots and t-tests that female athletes race slower and rank lower than male athletes, on average.
+  * Swim has the same correlation with division rank as in the pro's heatmap, therefore swim times do not have a big affect on how an athlete ranks.
+  * Athletes should practice the other sports and transitions if they want to rank higher.
+  * Both transitions for amateurs are very important to practice as they hold the same correlation as the run event with rank.
+
+
+  * Both heatmaps include a Bool_Gender column where female athletes result in True and male in False. The negative correlation in both heatmaps supports evidence from the previous scatter plots and t-tests that female athletes race slower and rank lower than male athletes, on average.
 
 # Up & Coming Athletes
 
@@ -305,7 +310,7 @@ Next I looked at how specialized an athlete is in a given event by defining thei
 ![maleprospec](images/maleprospecialize.png)
 
 Observations:
-  * I confirmed the original correlation matrix findings that show swim does not correlate with ranking and therefore should not be a focus in training.
+  * I confirmed the original correlation matrix findings that show swim does not correlate as strongly with ranking and therefore should not be a focus in training.
   * Running and biking are more so correlated with athlete rank.
   * Male pros are incredibly specialized bikers and less so runners.
   * Female pros specialize in running over biking.
@@ -315,6 +320,12 @@ I reaffirmed these observations by plotting specialization by rank for each gend
 
 <img src="images/femagegroupspecialization.png" alt="raw" width=50% height=50%/><img src="images/maleagegroupspecialization.png" alt="raw" width=50% height=50%/>
 <br>
+
+To test these observations, I divided my dataframe into three separate dataframes, each with only the highly specialized athletes in the respective three events. I conducted a two-sample, unpaired t-test of each dataframe against the regular dataframe. My t-test states a null and alternative hypothesis as follows:
+
+Null hypothesis: Athletes who specialize in a certain event do not have higher division rankings or better overall times.
+
+Alternative hypothesis: Athletes who specialize in a certain event place higher in their division and overall.
 
 ## References
 Dataset: https://www.kaggle.com/andyesi/2019-ironman-world-championship-results
