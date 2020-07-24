@@ -160,14 +160,16 @@ Null hypothesis: Athletes who specialize in a certain event do not have better o
 Alternative hypothesis: Athletes who specialize in a certain event have better overall competition times.
 
 | Event | P-value | T-test Statistic |
-| ---- | ---- | ---- |
+| ---- | ---- | :----: |
 | Swim | 9.508630443559785e-14 | 7.5 |
 | Bike | 4.492361692476316e-12 | -6.69 |
 | Run | 0.0009262274506303615 | -3.32 |
 
+The very small p-values indicate we accept our alternative hypothesis that athletes who specialize in at least one sport have lower overall race times.
+
 # Future Direction
 
-With more time, I'd like to find data on athlete training regiments and physiological tests
+With more time, I'd like to add to my overall data with results from Kona's 16-18 championships and find data on athlete training regiments and physiological tests to explore who was built for triathlon, and if you can train to overcome physiological impediments.
 
 ## References
 Dataset: https://www.kaggle.com/andyesi/2019-ironman-world-championship-results
