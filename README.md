@@ -302,7 +302,12 @@ Next I looked at how specialized an athlete is in a given event by defining thei
 
 ![maleprospec](images/maleprospecialize.png)
 
-Based of the above plots, we can confirm our original correlation matrix findings that show swim does not correlate with ranking and therefore should not be a focus in training. Running and biking are more so correlated with how an athlete ranks. Male pros are incredibly specialized bikers and less so runners. Female pros specialize in running more so than biking. Specializing in both running and biking lead to a higher rank because of the event's percentages of overall time.
+Based off the above plots, we can confirm our original correlation matrix findings that show swim does not correlate with ranking and therefore should not be a focus in training. Running and biking are more so correlated with athlete rank. Male pros are incredibly specialized bikers and less so runners. Female pros specialize in running over biking. Specializing in both running and biking lead to a higher rank because of the events' percentages of overall time.
+
+I reaffirmed these conclusions by plotting specialization by rank for each gender's division:
+
+<img src="images/femagegroupspecialization.png" alt="raw" width=50% height=50%/><img src="images/maleagegroupspecialization.png" alt="raw" width=50% height=50%/>
+<br>
 
 ## References
 Dataset: https://www.kaggle.com/andyesi/2019-ironman-world-championship-results
