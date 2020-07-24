@@ -18,7 +18,7 @@ Every year since 1978, the World's craziest endurance athletes compete in the Ko
 
 Kaggle has a dataset that includes the 2019 Ironman World Championship Results by athlete and includes the country they are representing, their category (Professional or Age Group), their overall placing, finish time, and swim / T1 / bike / T2 / run splits. 
 
-All of the time categories and rankings were in string format which is not helpful. My first goal was formatting the event times to actual times. They begin in a string format of 'timedate' and I conver them to minutes. I then cast the rank columns to integers.
+All of the time categories and rankings were in string format which is not helpful. My first goal was formatting the event times to actual times. They begin in a string format of 'timedate' and I convert them to minutes. I then cast the rank columns to integers.
 
 | BIB | Name | Country | Gender | Division | Swim | Bike | Run | Overall | Division Rank | Gender Rank | Overall Rank | T1 | T2 |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | 
@@ -311,7 +311,7 @@ Now we'll look at the top performing (10th percentile) amateurs and map them nex
 
 The top agegroupers (amateurs) are listed here by gender. After searching, we can see that a lot of these athletes were top competitor and pro at one point, or hold agegroup championships already!
 
-<img src="images/sponsorthesewomen.png" alt="raw" width=25% height=25%/><img src="images/sponsorthesemen.png" alt="raw" width=25% height=25%/>
+<img src="images/sponsorthesewomen.png" alt="raw" width=30% height=30%/><img src="images/sponsorthesemen.png" alt="raw" width=30% height=30%/>
 <br>
 
 # What type of athlete performs well in an Ironman Triathlon?
