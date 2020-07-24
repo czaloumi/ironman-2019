@@ -56,6 +56,12 @@ I continued cleaning my data by eliminating athletes who did not finish race eve
             '''
             self.df[self.col1] = self.df[self.col1].divide(60)
 
+Resulting cleaned data:
+
+| Name | Country | Gender | Division | Swim | Bike | Run | Overall | Division Rank | Gender Rank | Overall Rank | T1 | T2 |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | 
+| object | object | object | object | float64 | float64 | float64 | float64 | int64 | int64 | int64 | float64 | float64 | 
+
 
 # Exploratory Data Analysis
 
