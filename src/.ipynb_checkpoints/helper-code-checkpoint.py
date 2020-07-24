@@ -102,7 +102,8 @@ def plot_pro_90(sport, df1=fem_pro, df2=male_pro):
 
     ax.set_title(f'Pro {sport} 90th Percentiles', fontsize=20)
     ax.set_xlabel(f'{sport} Time (minutes)', fontsize=15)
-
+    ax.set_ylabel(f'Frequency of Bootstrapped 90th Percentiles', fontsize=10)
+    
     ax.axvline(left_f90p, c='pink', linestyle="--")
     ax.axvline(right_f90p, c='pink', linestyle="--")
     ax.axvline(left_m90p, c='grey', linestyle="--")
@@ -145,6 +146,7 @@ def plot_amateur_proci(sport, df1=fem_agegroups, df2=male_agegroups, df3=fem_pro
 
     ax.set_title(f'How do Amateurs Compare to the Pro {sport} 90th Percentile?', fontsize=20)
     ax.set_xlabel(f'{sport} Time (minutes)', fontsize=15)
+    ax.set_ylabel('Frequency', fontsize=15)
     
     m_ = m_agegroups_[m_agegroups_ <= right_m90p]
     f_ = f_agegroups_[f_agegroups_ <= right_f90p]

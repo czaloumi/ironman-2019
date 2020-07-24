@@ -18,7 +18,7 @@ Every year since 1978, the World's craziest endurance athletes compete in the Ko
 
 Kaggle has a dataset that includes the 2019 Ironman World Championship Results by athlete and includes the country they are representing, their category (Professional or Age Group), their overall placing, finish time, and swim / T1 / bike / T2 / run splits. 
 
-All of the time categories and rankings were in string format which is not helpful. My first goal was formatting the event times to actual times. They begin in a string format of 'timedate' and I convert them to minutes. I then cast the rank columns to integers.
+All of the time categories and rankings were in string format which is not helpful. My first goal was formatting the event times to actual times. The time columns began in a string format of 'datetime' and I convert them to minutes. I then cast the rank columns to integers.
 
 | BIB | Name | Country | Gender | Division | Swim | Bike | Run | Overall | Division Rank | Gender Rank | Overall Rank | T1 | T2 |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | 
@@ -65,7 +65,7 @@ Resulting cleaned data:
 
 # Exploratory Data Analysis
 
-My first question was, do pro athletes have significantly different event split times based on their gender? Below are scatter plots for pro athletes on the left, and all amateurs on the right, by event type.
+My first question was, do athletes have significantly different event split times based on their gender? Below are scatter plots for pro athletes on the left, and all amateurs on the right, by event type.
 
 <img src="images/image1.png" alt="raw" width=50% height=50%/><img src="images/image1_.png" alt="raw" width=50% height=50%/>
 <br>
