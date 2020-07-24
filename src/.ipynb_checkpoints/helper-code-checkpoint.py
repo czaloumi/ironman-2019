@@ -287,8 +287,8 @@ for i, j in enumerate(fem_div_list):
     plot_df = fem_results[fem_results['Division'] == f'{j}']
 
     ax[i].scatter(plot_df['Specialize Swim'], plot_df['Division Rank'], color='aqua', label='Swim')
-    ax[i].scatter(plot_df['Specialize Bike'], plot_df['Overall Rank'],color='red', label='Bike')
-    ax[i].scatter(plot_df['Specialize Run'], plot_df['Overall Rank'],color='green', label='Run')
+    ax[i].scatter(plot_df['Specialize Bike'], plot_df['Overall Rank'],color='crimson', label='Bike')
+    ax[i].scatter(plot_df['Specialize Run'], plot_df['Overall Rank'],color='violet', label='Run')
     ax[i].set_title(f'Female {j} Specialization by Rank', fontsize=20)
     ax[i].set_xlabel('Specialization Score', fontsize=12)
     ax[i].set_ylabel('Rank', fontsize=12)
