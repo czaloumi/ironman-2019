@@ -155,9 +155,9 @@ I reaffirmed these observations by plotting specialization by rank for each gend
 
 To test these observations, I divided my dataframe into three separate dataframes, each with only the highly specialized athletes in the respective three events. I conducted a two-sample, unpaired t-test of each dataframe against dataframes with the respective event's low specialize scores. My t-test states a null and alternative hypothesis as follows:
 
-Null hypothesis: Athletes who specialize in a certain event do not have better overall times than those who do not specialize.
+Null hypothesis: Athletes who specialize in a certain event do not have greater or lesser overall times than the mean of those who do not specialize.
 
-Alternative hypothesis: Athletes who specialize in a certain event have better overall competition times.
+Alternative hypothesis: Athletes who specialize in a certain event have overall competition times that are greater, or smaller than the mean of overall times of athletes who do not specialize.
 
 | Event | P-value | T-test Statistic |
 | ---- | ---- | :----: |
@@ -165,7 +165,7 @@ Alternative hypothesis: Athletes who specialize in a certain event have better o
 | Bike | 4.492361692476316e-12 | -6.69 |
 | Run | 0.0009262274506303615 | -3.32 |
 
-The very small p-values indicate we accept our alternative hypothesis that athletes who specialize in at least one sport have lower overall race times.
+The very small p-values indicate we accept our alternative hypothesis that athletes who specialize in at least one sport have overall race times that are greater or less than the non-specializing athlete's overall mean times. Swim specializing athletes have greater overall times than the non-specializing swim athlete overall race time average. Bike and run specializing athletes finish with an overall time that is faster than the mean overall time of their non-specializing competitors.
 
 # Future Direction
 
