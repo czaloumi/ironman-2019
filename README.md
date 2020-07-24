@@ -94,7 +94,7 @@ Of the amateurs, who's racing as fast as the pros and which amateur athletes sho
 
 
 | Event | Gender | 95% CI on 90th Percentile (min) | % Amateurs in 95% CI |
-| ---- | ---- | :----: | ---- |
+| ---- | ---- | :----: | :----: |
 | Swim | Female | [62.75, 75.4] | 48.52% |
 | Swim | Male | [52.38, 57.83] | 8.28% |
 | Bike | Female | [310.11, 333.25] | 11.69% |
