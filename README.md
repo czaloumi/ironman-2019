@@ -18,9 +18,13 @@ Every year since 1978, the World's craziest endurance athletes compete in the Ko
 
 Kaggle has a dataset that includes the 2019 Ironman World Championship Results by athlete and includes the country they are representing, their category (Professional or Age Group), their overall placing, finish time, and swim / T1 / bike / T2 / run splits. 
 
-# Exploratory Data Analysis
+All of the time categories and rankings were in string format which is not helpful. My first goal was formatting the event times to actual times. They begin in a string format of 'timedate' and I conver them to minutes. I then cast the rank columns to integers.
 
-After importing my data using Spark, I quickly converted my data to pandas and using timecleaning.py, converted all timedate data types into minutes. I continued cleaning my data by eliminating athletes who did not finish race events and were therefore disqualified.
+| BIB | Name | Country | Gender | Division | Swim | Bike | Run | Overall | Division Rank | Gender Rank | Overall Rank | T1 | T2 |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | 
+| int | string | string | string | string | string | string | string | string | string | string | string | string | string | 
+
+I continued cleaning my data by eliminating athletes who did not finish race events and were therefore disqualified.
 
 
     class TimeDateToMinutes(object):
@@ -52,6 +56,8 @@ After importing my data using Spark, I quickly converted my data to pandas and u
             '''
             self.df[self.col1] = self.df[self.col1].divide(60)
 
+
+# Exploratory Data Analysis
 
 My first question was, do pro athletes have significantly different event split times based on their gender? Below are scatter plots for pro athletes on the left, and all amateurs on the right, by event type.
 
