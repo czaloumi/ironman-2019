@@ -247,7 +247,7 @@ def rankvsevent(col1, normalized_sport):
     return fig, ax
 
 
-# (Land's function - defines consistency amongst three events)
+# Define consistency amongst three events
 
 def consistency(row):
     '''
@@ -256,3 +256,22 @@ def consistency(row):
     return max(row.Norm_Swim, row.Norm_Run, row.Norm_Bike) - min(row.Norm_Swim, row.Norm_Run, row.Norm_Bike)
 
 
+# Define specialization in one event
+
+def specialize(row, discipline):
+    '''
+    Returns specialize metrics for events (swim, bike, or run)
+    Users will need to edit the function to subtract whatever Specialized Metric they are looking for
+    specialize('Swim')
+    disciplines = [1, 2, 3]
+    '''
+    if discipline == 'Swim':
+        other1 = 'Bike'
+        other2 = 'Run'
+    elif discipline == 'Bike':
+        other1 = 'Swim'
+        other2 = 'Run'
+    else:
+        other1 = 'Bike'
+        other2 = 'Swim'
+    return row[[f'Norm_{other1}', f'Norm_{other2}']].mean() - row[f'Norm_{discipline}']
