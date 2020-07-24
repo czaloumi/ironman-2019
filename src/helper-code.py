@@ -277,3 +277,41 @@ def specialize(row, discipline):
         other1 = 'Bike'
         other2 = 'Swim'
     return row[[f'Norm_{other1}', f'Norm_{other2}']].mean() - row[f'Norm_{discipline}']
+
+
+# Plots specialization by division rank for all female divisions (minus pro)
+
+fig, ax = plt.subplots(len(fem_div_list), 1, figsize=(50,50))
+
+for i, j in enumerate(fem_div_list):
+    plot_df = fem_results[fem_results['Division'] == f'{j}']
+
+    ax[i].scatter(plot_df['Specialize Swim'], plot_df['Division Rank'], color='aqua', label='Swim')
+    ax[i].scatter(plot_df['Specialize Bike'], plot_df['Overall Rank'],color='red', label='Bike')
+    ax[i].scatter(plot_df['Specialize Run'], plot_df['Overall Rank'],color='green', label='Run')
+    ax[i].set_title(f'Female {j} Specialization by Rank', fontsize=20)
+    ax[i].set_xlabel('Specialization Score', fontsize=12)
+    ax[i].set_ylabel('Rank', fontsize=12)
+    #ax[i].set_xbound(-1,)
+    #ax[i].set_ybound(-1, 100)
+    ax[i].legend()
+plt.tight_layout()
+
+
+# same same but for male
+
+fig, ax = plt.subplots(len(male_div_list), 1, figsize=(50,50))
+
+for i, j in enumerate(male_div_list):
+    plot_df = male_results[male_results['Division'] == f'{j}']
+
+    ax[i].scatter(plot_df['Specialize Swim'], plot_df['Division Rank'], color='aqua', label='Swim')
+    ax[i].scatter(plot_df['Specialize Bike'], plot_df['Overall Rank'],color='red', label='Bike')
+    ax[i].scatter(plot_df['Specialize Run'], plot_df['Overall Rank'],color='green', label='Run')
+    ax[i].set_title(f'Male {j} Specialization by Rank', fontsize=20)
+    ax[i].set_xlabel('Specialization Score', fontsize=12)
+    ax[i].set_ylabel('Rank', fontsize=12)
+    #ax[i].set_xbound(-1,)
+    #ax[i].set_ybound(-1, 100)
+    ax[i].legend()
+plt.tight_layout()
