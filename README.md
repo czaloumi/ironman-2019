@@ -18,7 +18,7 @@ Every year since 1978, the World's craziest endurance athletes compete in the Ko
 
 Kaggle has a dataset that includes the 2019 Ironman World Championship Results by athlete and includes the country they are representing, their category (Professional or Age Group), their overall placing, finish time, and swim / T1 / bike / T2 / run splits. 
 
-All of the time categories and rankings were in string format which is not helpful. My first goal was formatting the event times to actual times. The time columns began in a string format of 'datetime' and I convert them to minutes. I then cast the rank columns to integers.
+All of the time categories and rankings were in string format which is not helpful. My first goal was formatting the event times to actual times. The time columns began in a string format of 'datetime' and I convert them to minutes. I then cast the rank columns to integers. Data types of the csv to start:
 
 | BIB | Name | Country | Gender | Division | Swim | Bike | Run | Overall | Division Rank | Gender Rank | Overall Rank | T1 | T2 |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | 
@@ -57,7 +57,7 @@ Alternative hypothesis: men and women mean racetimes are different, meaning one 
 
 Pro t-test statistic: -7.76, Pro p-value: 5.156855215220441e-10
 
-The large, negative t-test statistic value (-7.76) means there is a very big difference between the gender's mean overall times. The very small p-value allows us to reject the null hypothesis in favor of the alternative hypothesis. Therefore we can reason that pro male triathletes, on average, race faster than pro women triathletes. We can run a similar test on the amateur gender groups:
+The very small p-value allows us to reject the null hypothesis in favor of the alternative hypothesis. Therefore we can reason that pro male triathletes, on average, race faster than pro women triathletes. We can run a similar test on the amateur gender groups:
 
     t_statistic, pvalue = ttest_ind(male_agegroups['Overall'], fem_agegroups['Overall'], equal_var=False)
 
@@ -74,8 +74,7 @@ Next I plotted correlation heatmaps using the seaborn package to see what correl
   * Therefore pro athletes need to practice their transition from bike to running as well as perform their best in running to rank higher. 
 
 
-  * Swim has the same correlation with division rank as in the pro's heatmap, therefore swim times do not have a big affect on how an athlete ranks.
-  * Athletes should practice the other sports and transitions if they want to rank higher.
+  * Swim has the lowest correlation (although still correlated) than the other events, therefore swim times do not have as big affect on how an athlete ranks.Athletes should practice the other sports and transitions if they want to rank higher.
   * Both transitions for amateurs are very important to practice as they hold the same correlation as the run event with rank.
 
 
