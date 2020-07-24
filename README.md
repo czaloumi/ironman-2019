@@ -288,6 +288,8 @@ To answer this question, I standardized each event time (swim, bike, run) to com
 
 ![consistency](images/consistency.png)
 
+The more consistently fast their event times, the higher ranking an athlete.
+
 We can look at each division's consistency as well to see what agegroup holds the "all-around" athletes.
 
 ![divconsistency](images/divisionconsistency.png)
@@ -303,11 +305,11 @@ Next I looked at how specialized an athlete is in a given event by defining thei
 ![maleprospec](images/maleprospecialize.png)
 
 Observations:
-    * I confirmed the original correlation matrix findings that show swim does not correlate with ranking and therefore should not be a focus in training.
-    * Running and biking are more so correlated with athlete rank.
-    * Male pros are incredibly specialized bikers and less so runners.
-    * Female pros specialize in running over biking.
-    * Specializing in both running and biking lead to a higher rank because of the events' percentages of overall time.
+  * I confirmed the original correlation matrix findings that show swim does not correlate with ranking and therefore should not be a focus in training.
+  * Running and biking are more so correlated with athlete rank.
+  * Male pros are incredibly specialized bikers and less so runners.
+  * Female pros specialize in running over biking.
+  * Specializing in both running and biking lead to a higher rank because of the events' percentages of overall time.
 
 I reaffirmed these observations by plotting specialization by rank for each gender's division:
 
