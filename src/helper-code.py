@@ -279,16 +279,24 @@ def specialize(row, discipline):
     return row[[f'Norm_{other1}', f'Norm_{other2}']].mean() - row[f'Norm_{discipline}']
 
 
+# Unique divisions, sorted
+
+male_div_list = male_agegroups.Division.unique()
+fem_div_list = fem_agegroups.Division.unique()
+f = np.sort(fem_div_list)
+m = np.sort(male_div_list)
+
+
 # Plots specialization by division rank for all female divisions (minus pro)
 
-fig, ax = plt.subplots(len(fem_div_list), 1, figsize=(50,50))
+fig, ax = plt.subplots(len(f), 1, figsize=(12,50))
 
-for i, j in enumerate(fem_div_list):
+for i, j in enumerate(f):
     plot_df = fem_results[fem_results['Division'] == f'{j}']
 
     ax[i].scatter(plot_df['Specialize Swim'], plot_df['Division Rank'], color='aqua', label='Swim')
-    ax[i].scatter(plot_df['Specialize Bike'], plot_df['Overall Rank'],color='crimson', label='Bike')
-    ax[i].scatter(plot_df['Specialize Run'], plot_df['Overall Rank'],color='violet', label='Run')
+    ax[i].scatter(plot_df['Specialize Bike'], plot_df['Division Rank'],color='crimson', label='Bike')
+    ax[i].scatter(plot_df['Specialize Run'], plot_df['Division Rank'],color='violet', label='Run')
     ax[i].set_title(f'Female {j} Specialization by Rank', fontsize=20)
     ax[i].set_xlabel('Specialization Score', fontsize=12)
     ax[i].set_ylabel('Rank', fontsize=12)
@@ -300,14 +308,14 @@ plt.tight_layout()
 
 # same same but for male
 
-fig, ax = plt.subplots(len(male_div_list), 1, figsize=(50,50))
+fig, ax = plt.subplots(len(m), 1, figsize=(12,50))
 
-for i, j in enumerate(male_div_list):
+for i, j in enumerate(m):
     plot_df = male_results[male_results['Division'] == f'{j}']
 
     ax[i].scatter(plot_df['Specialize Swim'], plot_df['Division Rank'], color='aqua', label='Swim')
-    ax[i].scatter(plot_df['Specialize Bike'], plot_df['Overall Rank'],color='red', label='Bike')
-    ax[i].scatter(plot_df['Specialize Run'], plot_df['Overall Rank'],color='green', label='Run')
+    ax[i].scatter(plot_df['Specialize Bike'], plot_df['Division Rank'],color='red', label='Bike')
+    ax[i].scatter(plot_df['Specialize Run'], plot_df['Division Rank'],color='green', label='Run')
     ax[i].set_title(f'Male {j} Specialization by Rank', fontsize=20)
     ax[i].set_xlabel('Specialization Score', fontsize=12)
     ax[i].set_ylabel('Rank', fontsize=12)
@@ -315,3 +323,23 @@ for i, j in enumerate(male_div_list):
     #ax[i].set_ybound(-1, 100)
     ax[i].legend()
 plt.tight_layout()
+
+
+# Specialize your dataframes
+
+def separate_specialized(df, event, threshold):
+    '''
+    Returns two dataframes
+    
+    Parameters:
+    df: dataframe
+    event: string: event in question
+    threshold: float: how specialized do you want to make these athletes?
+    
+    Returns: 
+    spec: df of specialized athletes
+    non_spec: df of non specialized athletes
+    '''
+    spec = df.loc[df[f'Specialize {event}'] > threshold]
+    non_spec = df.loc[df[f'Specialize {event}'] < threshold]
+    return spec, non_spec
