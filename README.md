@@ -110,21 +110,8 @@ Both heatmaps include a Bool_Gender column where female athletes result in True 
 
 # Up & Coming Athletes
 
-Of the amateurs, who's racing as fast as the pros and which amateur athletes should sponsors sign? To answer this, I bootstrapped the 90th percentile of pros in both genders and used a 95% confidence interval to determine the "slower" pros in event times. The following code returns a random array of event times, bootstraps any statistic provided by numpy, and then plots the pro 90th percentiles with 95% confidence intervals.
+Of the amateurs, who's racing as fast as the pros and which amateur athletes should sponsors sign? To answer this, I bootstrapped the 90th percentile of pros in both genders and used a 95% confidence interval to determine the "slower" pros in event times.
 
-    def times(df, sport):
-        '''
-        Returns an array of randomly chosen times according to the sport specified.
-    
-        Parameters:
-        df: dataFrame pulling from
-        sport: string: 'Swim', 'Bike', 'Run', or 'Overall'
-    
-        Returns:
-        np.array of length 2434, with time entries in minutes
-        '''
-        l = df[sport]
-        return np.random.choice(df[sport], size=len(l), replace=True)
         
     def bootstrap_statistic(df, sport, samples, statistic):
         '''
@@ -157,37 +144,6 @@ Of the amateurs, who's racing as fast as the pros and which amateur athletes sho
             samp = times(df, sport)
             statistics.append(statistic(samp, percent))
         return statistics
-
-    def plot_pro_90(sport, df1=fem_pro, df2=male_pro):
-        # Generate bootstrap 90th percentiles
-        fem_90p = bootstrap_percentile(df1, sport, 1000, 90)
-        male_90p = bootstrap_percentile(df2, sport, 1000, 90)
-
-        # Say it with confidence
-        left_f90p = np.percentile(fem_90p, 2.5)
-        right_f90p = np.percentile(fem_90p, 97.5)
-
-        left_m90p = np.percentile(male_90p, 2.5)
-        right_m90p = np.percentile(male_90p, 97.5)
-
-        # Plot it
-        fig, ax = plt.subplots(1, figsize=(12,4))
-        ax.hist(fem_90p, bins=50, density=True, color='pink', alpha=0.8, label=f'Female Pro {sport} 90th Percentile')
-        ax.hist(male_90p, bins=50, density=True, color='b', alpha=0.7, label=f'Male Pro {sport} 90th Percentile')
-        ax.legend()
-
-        ax.set_title(f'Pro {sport} 90th Percentiles', fontsize=20)
-        ax.set_xlabel(f'{sport} Time (minutes)', fontsize=15)
-
-        ax.axvline(left_f90p, c='pink', linestyle="--")
-        ax.axvline(right_f90p, c='pink', linestyle="--")
-        ax.axvline(left_m90p, c='grey', linestyle="--")
-        ax.axvline(right_m90p, c='grey', linestyle="--")
-
-        print(f'Female Pro {sport} Times Bootstrap Confidence Interval for Population 90th Percentile (minutes): [{round(left_f90p, 2)}, {round(right_f90p,2)}]')
-        print(f'Male Pro {sport} Times Bootstrap Confidence Interval for Population 90th Percentile (minutes): [{round(left_m90p, 2)}, {round(right_m90p,2)}]')
-
-        return fig, ax
 
 
 ![proswim90thpercentile](images/proswim90th.png)
