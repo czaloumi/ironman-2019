@@ -322,7 +322,7 @@ The top agegroupers (amateurs) are listed here by gender. After searching, we ca
 
 # What type of athlete performs well in an Ironman Triathlon?
 
-To answer this question, I standardized each event time (swim, bike, run) by subtracting the respective event column's mean, and dividing by the event column's standard deviation. Using the consistency function below, I defined a "consistency factor" to illustrate how consistently well, or poorly, athletes' event times are. The plot below illustrates consistency and how athletes ranked.
+To answer this question, I standardized each event time (swim, bike, run) to compare how many standard deviations each athlete's time is from that category's mean time. Using the consistency function below, I defined a "consistency factor" to illustrate how consistently well, or poorly, athletes' event times are. The plot below illustrates consistency and how athletes ranked.
 
     def consistency(row):
         '''
@@ -335,6 +335,18 @@ To answer this question, I standardized each event time (swim, bike, run) by sub
 We can look at each division's consistency as well to see what agegroup holds the "all-around" athletes.
 
 ![divconsistency](images/divisionconsistency.png)
+
+Male Pros and Males 30-39 perform the most consistently well in their respective divisions, and overall. This supports previous knowledge (not explored in this study) claiming that 30-39 is the prime age for traithletes because of the time it takes to train your body to compete in long endurance races.
+
+Next I looked at how specialized an athlete is in a given event by defining their event specializations as follows:
+
+![dfexample](images/stand_spec_df_ex.png)
+
+![femprospec](images/femprospecialize.png)
+
+![maleprospec](images/maleprospecialize.png)
+
+
 
 ## References
 Dataset: https://www.kaggle.com/andyesi/2019-ironman-world-championship-results
