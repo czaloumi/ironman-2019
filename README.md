@@ -94,34 +94,16 @@ Of the amateurs, who's racing as fast as the pros and which amateur athletes sho
 ![prooverall90thpercentile](images/prooverall90th.png)
 
 
-| Event | Gender | 95% CI on 90th Percentile (min) |
-| ---- | ---- | :----: |
-| Swim | Female | [62.75, 75.4] |
-| Swim | Male | [52.38, 57.83] |
-| Bike | Female | [310.11, 333.25] |
-| Bike | Male | [273.95, 283.17] |
-| Run | Female | [211.39, 297.6] |
-| Run | Male | [193.28, 221.37] |
-| Overall | Female | [585.6, 688.37] |
-| Overall | Male | [521.32, 548.9] |
-
-
-The following code plots the amateur event times with the pro 95% confidence interval for their 90th percentile so we can look at what amateurs are racing like the slower pros.
-
-![amateuroverallpro90th](images/amateursoverallpro90th.png)
-
-To save space, we'll only look at the percentages of amateurs who race like pros for the rest of the events.
-
-| Event | Gender | % Racing like Pros |
-| ---- | ---- | ---- |
-| Swim | Female | 48.52% |
-| Swim | Male | 8.28% |
-| Bike | Female | 11.69% |
-| Bike | Male | 1.74% |
-| Run | Female | 72.43% |
-| Run | Male | 37.09% |
-| Overall | Female | 36.47% |
-| Overall | Male | 2.74% |
+| Event | Gender | 95% CI on 90th Percentile (min) | % Amateurs in 95% CI |
+| ---- | ---- | :----: | ---- |
+| Swim | Female | [62.75, 75.4] | 48.52% |
+| Swim | Male | [52.38, 57.83] | 8.28% |
+| Bike | Female | [310.11, 333.25] | 11.69% |
+| Bike | Male | [273.95, 283.17] | 1.74% |
+| Run | Female | [211.39, 297.6] | 72.43% |
+| Run | Male | [193.28, 221.37] | 37.09% |
+| Overall | Female | [585.6, 688.37] | 36.47% |
+| Overall | Male | [521.32, 548.9] | 2.74% |
 
 
 Now we'll look at the top performing (10th percentile) amateurs and map them next to the pros 90th percentiles (with 95% confidence of course!).
