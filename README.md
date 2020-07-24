@@ -84,14 +84,6 @@ Next I plotted correlation heatmaps using the seaborn package to see what correl
 
 Of the amateurs, who's racing as fast as the pros and which amateur athletes should sponsors sign? To answer this, I bootstrapped the 90th percentile of pros in both genders and used a 95% confidence interval to determine the "slower" pros in event times.
 
-![proswim90thpercentile](images/proswim90th.png)
-
-![probike90thpercentile](images/probike90th.png)
-
-![prorun90thpercentile](images/prorun90th.png)
-
-![prooverall90thpercentile](images/prooverall90th.png)
-
 
 | Event | Gender | 95% CI on 90th Percentile (min) | % Amateurs in 95% CI |
 | ---- | ---- | :----: | :----: |
@@ -105,7 +97,7 @@ Of the amateurs, who's racing as fast as the pros and which amateur athletes sho
 | Overall | Male | [521.32, 548.9] | 2.74% |
 
 
-Now we'll look at the top performing (10th percentile) amateurs and map them next to the pros 90th percentiles (with 95% confidence of course!).
+I visualized this data with the following plots of bootstrapped top performing (10th percentile) amateurs with the pro's 90th percentiles (with 95% confidence of course).
 
 ![amateurswim10thpro90th](images/amateur10thswimpro90th.png)
 
@@ -122,7 +114,7 @@ The top agegroupers (amateurs) are listed here by gender. After researching, I f
 
 # What type of athlete performs well in an Ironman Triathlon?
 
-To answer this question, I standardized each event time (swim, bike, run) to compare how many standard deviations each athlete's time is from that category's mean time. Using the consistency function below, I defined a "consistency factor" to illustrate how consistently well, or poorly, athletes' event times are. The plot below illustrates consistency and how athletes ranked.
+To answer this question, I standardized each event time (swim, bike, run) to compare how many standard deviations each athlete's time is from that category's mean time. Using the consistency function below, I defined a "consistency factor" to illustrate how consistently well, or poorly, athletes' event times are.
 
     def consistency(row):
         '''
@@ -132,13 +124,14 @@ To answer this question, I standardized each event time (swim, bike, run) to com
 
 ![consistency](images/consistency.png)
 
-The more consistently fast their event times, the higher ranking an athlete.
+Not surprisingly, the more consistently fast their event times, the higher ranking an athlete.
 
 We can look at each division's consistency as well to see what agegroup holds the "all-around" athletes.
 
+
 ![divconsistency](images/divisionconsistency.png)
 
-Male Pros and Males 30-39 perform the most consistently well in their respective divisions, and overall. This supports previous knowledge (not explored in this study) claiming that 30-39 is the prime age for triathletes because of how long it takes to train your body to compete in long endurance races.
+Eyeing this plot, male pros and males 30-39 perform the most consistently well in their respective divisions, and overall. This supports previous knowledge (not explored in this study) claiming that 30-39 is the prime age for triathletes because of how long it takes to train your body to compete in long endurance races.
 
 Next I looked at how specialized an athlete is in a given event by defining their event specializations as the difference of the event in question from the mean of the other two events. I then plotted the pro's specializations and their rank to give us a better idea on which events the pros focus on to become the best.
 
