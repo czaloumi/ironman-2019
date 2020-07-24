@@ -12,7 +12,7 @@
 
 The triathlon is arguably one of the most extreme and mentally taxing endurance sport competitions. Athletes train for years to complete the one-day competition consisting of a 2.4-mile (3.86 km) swim, a 112-mile (180.25 km) bicycle ride and a marathon 26.22-mile (42.20 km) run, raced in that order. Because a traithlon has three separate endurance sports, it begs the question, what comprises a strong Ironman athlete?
 
-Every year since 1978, the World's craziest endurance athletes compete in the Kona Ironman World Championship (2020 being a COVID-exception). My goal is to explore the 2019 Ironman World Championship Results to determine which up and coming athletes sponsors should target and whether athletes hailing from specific backgrounds are more likely to perform well in an Ironman triathlon.
+Every year since 1978, the World's craziest endurance athletes compete in the Kona Ironman World Championship (2020 being a COVID-exception). My goal is to explore the 2019 Ironman World Championship Results to determine which up and coming athletes sponsors should target and whether athletes with specific strengths are more likely to perform well in an Ironman triathlon.
 
 # Data
 
@@ -188,7 +188,7 @@ Of the amateurs, who's racing as fast as the pros and which amateur athletes sho
 
 
 | Event | Gender | 95% CI on 90th Percentile (min) |
-| ---- | ---- | ---- |
+| ---- | ---- | :----: |
 | Swim | Female | [62.75, 75.4] |
 | Swim | Male | [52.38, 57.83] |
 | Bike | Female | [310.11, 333.25] |
@@ -310,7 +310,7 @@ The top agegroupers (amateurs) are listed here by gender. After searching, we ca
 
 # What type of athlete performs well in an Ironman Triathlon?
 
-To answer this question, I standardized each event time (swim, bike, run) by subtracting each respective events column's mean, and dividing by the event column's standard deviation. Using the consistency function below, I defined a "consistency factor" to illustrate how consistently well, or poorly, athletes' event times are. The plot below illustrates consistency and how athletes ranked.
+To answer this question, I standardized each event time (swim, bike, run) by subtracting the respective event column's mean, and dividing by the event column's standard deviation. Using the consistency function below, I defined a "consistency factor" to illustrate how consistently well, or poorly, athletes' event times are. The plot below illustrates consistency and how athletes ranked.
 
     def consistency(row):
         '''
