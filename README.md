@@ -24,39 +24,7 @@ All of the time categories and rankings were in string format which is not helpf
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | 
 | int | string | string | string | string | string | string | string | string | string | string | string | string | string | 
 
-I continued cleaning my data by eliminating athletes who did not finish race events and were therefore disqualified.
-
-
-    class TimeDateToMinutes(object):
-        '''
-        Converts timedate columns to timedelta to seconds to minutes.
-        '''
-        def __init__(self, df, col1):
-            self.df = df
-            self.col1 = col1
-            self._timedelt()
-            self._seconds()
-            self._minutes()
-        
-        def _timedelt(self):
-            '''
-            Convert cols to timedelta with units in seconds (timedelta puts in ns)
-            '''
-            self.df[[self.col1]] = self.df[self.col1].apply(pd.to_timedelta, unit='s')
-    
-        def _seconds(self):
-            '''
-            Converts df column from timedelta dtype to seconds
-            '''
-            self.df[self.col1] = self.df[self.col1].apply(lambda x: x.total_seconds())
-    
-        def _minutes(self):
-            '''
-            Converts df column from seconds to minutes
-            '''
-            self.df[self.col1] = self.df[self.col1].divide(60)
-
-Resulting cleaned data:
+I continued cleaning my data by eliminating athletes who did not finish race events and were therefore disqualified. Resulting cleaned data:
 
 | Name | Country | Gender | Division | Swim | Bike | Run | Overall | Division Rank | Gender Rank | Overall Rank | T1 | T2 |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | 
@@ -117,40 +85,6 @@ Next I plotted correlation heatmaps using the seaborn package to see what correl
 
 Of the amateurs, who's racing as fast as the pros and which amateur athletes should sponsors sign? To answer this, I bootstrapped the 90th percentile of pros in both genders and used a 95% confidence interval to determine the "slower" pros in event times.
 
-        
-    def bootstrap_statistic(df, sport, samples, statistic):
-        '''
-        Returns an array of bootstrapped statistics
-
-        Parameters:
-        df: dataFrame pulling from
-        sport: string: 'Swim', 'Bike', 'Run', or 'Overall'
-        samples: int: # of samples desired
-        statistic: string: statistic to calculate on sample i.e. np.median, np.var, np.std
-        '''
-        statistics = []
-        for i in range(samples):
-                samp = times(df, sport)
-                statistics.append(statistic(samp))
-        return statistics
-    
-    def bootstrap_percentile(df, sport, samples, percent, statistic=np.percentile):
-        '''
-        Returns an array of bootstrapped percentiles
-
-        Parameters:
-        df: dataFrame pulling from
-        sport: string: 'Swim', 'Bike', 'Run', or 'Overall'
-        samples: int: # of samples desired
-        statistic: np.percentile
-        '''
-        statistics = []
-        for i in range(samples):
-            samp = times(df, sport)
-            statistics.append(statistic(samp, percent))
-        return statistics
-
-
 ![proswim90thpercentile](images/proswim90th.png)
 
 ![probike90thpercentile](images/probike90th.png)
@@ -174,45 +108,6 @@ Of the amateurs, who's racing as fast as the pros and which amateur athletes sho
 
 The following code plots the amateur event times with the pro 95% confidence interval for their 90th percentile so we can look at what amateurs are racing like the slower pros.
 
-    def plot_amateur_proci(sport, df1=fem_agegroups, df2=male_agegroups, df3=fem_pro, df4=male_pro):
-        # Convert Amateur times to minutes
-        f_agegroups_ = df1[sport] / 60
-        m_agegroups_ = df2[sport] / 60
-
-        # Generate pro bootstrap 90th percentiles
-        fem_90p = bootstrap_percentile(df3, sport, 1000, 90)
-        male_90p = bootstrap_percentile(df4, sport, 1000, 90)
-
-        # Say it with confidence
-        left_f90p = np.percentile(fem_90p, 2.5) / 60
-        right_f90p = np.percentile(fem_90p, 97.5) / 60
-
-        left_m90p = np.percentile(male_90p, 2.5) / 60
-        right_m90p = np.percentile(male_90p, 97.5) /60
-
-        # Plot it
-        fig, ax = plt.subplots(1, figsize=(12,4))
-
-        ax.hist(m_agegroups_, bins=100, density=True, color='grey', alpha=0.75, label=f'Male Amateur {sport} Times')
-        ax.hist(f_agegroups_, bins=100, density=True, color='pink', alpha=0.75, label=f'Female Amateur {sport} Times')
-        ax.axvline(left_f90p, c='red', linestyle="--", label='Female Pro 90 Percentile')
-        ax.axvline(right_f90p, c='red', linestyle="--")
-        ax.axvline(left_m90p, c='black', linestyle="--", label='Male Pro 90 Percentile')
-        ax.axvline(right_m90p, c='black', linestyle="--")
-        ax.legend()
-
-        ax.set_title(f'How do Amateurs Compare to the Pro {sport} 90th Percentile?', fontsize=20)
-        ax.set_xlabel(f'{sport} Time (minutes)', fontsize=15)
-
-        m_ = m_agegroups_[m_agegroups_ <= right_m90p]
-        f_ = f_agegroups_[f_agegroups_ <= right_f90p]
-        mam_pros_ = round((len(m_) / len(m_agegroups_))*100, 2)
-        fam_pros_ = round((len(f_) / len(f_agegroups_))*100, 2)
-        print(f'Percent of male amateurs who {sport} like pros: {mam_pros_}%')
-        print(f'Percent of female amateurs who {sport} like pros: {fam_pros_}%')
-
-        return fig, ax
-
 ![amateuroverallpro90th](images/amateursoverallpro90th.png)
 
 To save space, we'll only look at the percentages of amateurs who race like pros for the rest of the events.
@@ -230,43 +125,6 @@ To save space, we'll only look at the percentages of amateurs who race like pros
 
 
 Now we'll look at the top performing (10th percentile) amateurs and map them next to the pros 90th percentiles (with 95% confidence of course!).
-
-    def plot_cis(sport, df1=fem_agegroups, df2=male_agegroups, df3=fem_pro, df4=male_pro):    
-        # Bootstrap amateur 10th percentiles
-        fem_10 = bootstrap_percentile(df1, sport, 1000, 10)
-        male_10 = bootstrap_percentile(df2, sport, 1000, 10)
-
-        # Say it with confidence
-        left_f10 = np.percentile(fem_10, 2.5)
-        right_f10 = np.percentile(fem_10, 97.5)
-        left_m10 = np.percentile(male_10, 2.5)
-        right_m10 = np.percentile(male_10, 97.5)
-
-        # Generate pro bootstrap 90th percentiles
-        fem_90 = bootstrap_percentile(df3, sport, 1000, 90)
-        male_90 = bootstrap_percentile(df4, sport, 1000, 90)
-
-        # Say it with confidence
-        left_f90 = np.percentile(fem_90, 2.5)
-        right_f90 = np.percentile(fem_90, 97.5)
-        left_m90 = np.percentile(male_90, 2.5)
-        right_m90 = np.percentile(male_90, 97.5)
-
-        # Plot it
-        fig, ax = plt.subplots(1, figsize=(12,4))
-
-        ax.hist(male_10, bins=100, density=True, color='grey', alpha=0.75, label=f'Male Amateur {sport} 10 Percentiles')
-        ax.hist(fem_10, bins=100, density=True, color='pink', alpha=0.75, label=f'Female Amateur {sport} 10 Percentiles')
-        ax.axvline(left_f90, c='red', linestyle="--", label='Female Pro 90 Percentile')
-        ax.axvline(right_f90, c='red', linestyle="--")
-        ax.axvline(left_m90, c='black', linestyle="--", label='Male Pro 90 Percentile')
-        ax.axvline(right_m90, c='black', linestyle="--")
-        ax.legend()
-
-        ax.set_title(f'How does the {sport} Amateur 10th Percentile Compare to the Pro 90th Percentile?', fontsize=20)
-        ax.set_xlabel(f'{sport} Time (seconds)', fontsize=15)
-
-        return fig, ax
 
 ![amateurswim10thpro90th](images/amateur10thswimpro90th.png)
 
@@ -321,11 +179,11 @@ I reaffirmed these observations by plotting specialization by rank for each gend
 <img src="images/femagegroupspecialization.png" alt="raw" width=50% height=50%/><img src="images/maleagegroupspecialization.png" alt="raw" width=50% height=50%/>
 <br>
 
-To test these observations, I divided my dataframe into three separate dataframes, each with only the highly specialized athletes in the respective three events. I conducted a two-sample, unpaired t-test of each dataframe against the regular dataframe. My t-test states a null and alternative hypothesis as follows:
+To test these observations, I divided my dataframe into three separate dataframes, each with only the highly specialized athletes in the respective three events. I conducted a two-sample, unpaired t-test of each dataframe against dataframes with the respective event's low specialize scores. My t-test states a null and alternative hypothesis as follows:
 
-Null hypothesis: Athletes who specialize in a certain event do not have higher division rankings or better overall times.
+Null hypothesis: Athletes who specialize in a certain event do not have higher better overall times than those who do not specialize.
 
-Alternative hypothesis: Athletes who specialize in a certain event place higher in their division and overall.
+Alternative hypothesis: Athletes who specialize in a certain event place higher overall.
 
 ## References
 Dataset: https://www.kaggle.com/andyesi/2019-ironman-world-championship-results
