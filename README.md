@@ -271,7 +271,7 @@ Now we'll look at the top performing (10th percentile) amateurs and map them nex
 
 ![amateurswim10thpro90th](images/amateur10thoverallpro90th.png)
 
-The top agegroupers (amateurs) are listed here by gender. After searching, we can see that a lot of these athletes were top competitor and pro at one point, or hold agegroup championships already!
+The top agegroupers (amateurs) are listed here by gender. After researching, I found many of these athletes were top competitors and pro at one point, or hold agegroup championships already!
 
 <img src="images/sponsorthesewomen.png" alt="raw" width=30% height=30%/><img src="images/sponsorthesemen.png" alt="raw" width=30% height=30%/>
 <br>
@@ -292,9 +292,9 @@ We can look at each division's consistency as well to see what agegroup holds th
 
 ![divconsistency](images/divisionconsistency.png)
 
-Male Pros and Males 30-39 perform the most consistently well in their respective divisions, and overall. This supports previous knowledge (not explored in this study) claiming that 30-39 is the prime age for traithletes because of the time it takes to train your body to compete in long endurance races.
+Male Pros and Males 30-39 perform the most consistently well in their respective divisions, and overall. This supports previous knowledge (not explored in this study) claiming that 30-39 is the prime age for triathletes because of how long it takes to train your body to compete in long endurance races.
 
-Next I looked at how specialized an athlete is in a given event by defining their event specializations as follows:
+Next I looked at how specialized an athlete is in a given event by defining their event specializations as the difference of the event in question from the mean of the other two events. I then plotted the pro's specializations and their rank to give us a better idea on which events the pros focus on to become the best.
 
 ![dfexample](images/stand_spec_df_ex.png)
 
@@ -302,7 +302,7 @@ Next I looked at how specialized an athlete is in a given event by defining thei
 
 ![maleprospec](images/maleprospecialize.png)
 
-
+Based of the above plots, we can confirm our original correlation matrix findings that show swim does not correlate with ranking and therefore should not be a focus in training. Running and biking are more so correlated with how an athlete ranks. Male pros are incredibly specialized bikers and less so runners. Female pros specialize in running more so than biking. Specializing in both running and biking lead to a higher rank because of the event's percentages of overall time.
 
 ## References
 Dataset: https://www.kaggle.com/andyesi/2019-ironman-world-championship-results
