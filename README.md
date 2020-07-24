@@ -155,9 +155,9 @@ I reaffirmed these observations by plotting specialization by rank for each gend
 
 To test these observations, I divided my dataframe into three separate dataframes, each with only the highly specialized athletes in the respective three events. I conducted a two-sample, unpaired t-test of each dataframe against dataframes with the respective event's low specialize scores. My t-test states a null and alternative hypothesis as follows:
 
-Null hypothesis: Athletes who specialize in a certain event do not have higher better overall times than those who do not specialize.
+Null hypothesis: Athletes who specialize in a certain event do not have better overall times than those who do not specialize.
 
-Alternative hypothesis: Athletes who specialize in a certain event place higher overall.
+Alternative hypothesis: Athletes who specialize in a certain event have better overall competition times.
 
 ## References
 Dataset: https://www.kaggle.com/andyesi/2019-ironman-world-championship-results
