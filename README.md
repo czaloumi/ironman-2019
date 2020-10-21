@@ -110,13 +110,7 @@ The top agegroupers (amateurs) are listed here by gender. After researching, I f
 
 # What type of athlete performs well in an Ironman Triathlon?
 
-To answer this question, I standardized each event time (swim, bike, run) to compare how many standard deviations each athlete's time is from that category's mean time. Using the consistency function below, I defined a "consistency factor" to illustrate how consistently well, or poorly, athletes' event times are.
-
-    def consistency(row):
-        '''
-        Returns difference from standardized mean
-        '''
-        return max(row.Norm_Swim, row.Norm_Run, row.Norm_Bike) - min(row.Norm_Swim, row.Norm_Run, row.Norm_Bike)
+To answer this question, I standardized each event time (swim, bike, run) to compare how many standard deviations each athlete's time is from that category's mean time. Displayed below is each athlete's "consistency factor" to illustrate how consistently well, or poorly, athletes' event times are.
 
 ![consistency](images/consistency.png)
 
