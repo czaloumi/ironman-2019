@@ -53,15 +53,11 @@ On average, do men race faster than women? Eyeing the scatter plots above, it wo
 
 * Alternative hypothesis: men and women mean racetimes are different, meaning one gender races faster than the other.
 
-    t_statistic, pvalue = ttest_ind(male_pro['Overall'], fem_pro['Overall'], equal_var=False)
-
-* Pro t-test statistic: -7.76, Pro p-value: 5.156855215220441e-10
+    Pro t-test statistic: -7.76, Pro p-value: 5.156855215220441e-10
 
 The very small p-value allows us to reject the null hypothesis in favor of the alternative hypothesis. Therefore we can reason that pro male triathletes, on average, race faster than pro women triathletes. We can run a similar test on the amateur gender groups:
 
-    t_statistic, pvalue = ttest_ind(male_agegroups['Overall'], fem_agegroups['Overall'], equal_var=False)
-
-* Amateur t-test statistic: -13.63, Amateur p-value: 3.889330523969423e-39
+    Amateur t-test statistic: -13.63, Amateur p-value: 3.889330523969423e-39
 
 The amateur race times give us stronger reason to reject the null hypothesis and state that on average, male amateur triathletes compete faster than female amateur triathletes.
 
