@@ -16,15 +16,15 @@ Every year since 1978, the World's craziest endurance athletes compete in the Ko
 
 # Data
 
-Kaggle has a dataset that includes the 2019 Ironman World Championship Results by athlete and includes the country they are representing, their category (Professional or Age Group), their overall placing, finish time, and swim / T1 / bike / T2 / run splits. 
+I used a Kaggle dataset of the 2019 Ironman World Championship Results, link in references. Rows are entries by athlete and include the country they are representing, their category (Professional or Age Group), their overall placing, finish time, and swim / T1 / bike / T2 / run splits. Dataset originally consisted of 14 columns and 3,045 rows or observations/athletes.
 
-All of the time categories and rankings were in string format which is not helpful. My first goal was formatting the event times to actual times. The time columns began in a string format of 'datetime' and I convert them to minutes. I then cast the rank columns to integers. Data types of the csv to start:
+All of the time categories and rankings were in string format. My first goal was formatting the event times to a time value or float: i.e. convert string format of 'datetime' to minutes. I then cast the rank columns to integers. Original columns and corresponding datatypes:
 
 | BIB | Name | Country | Gender | Division | Swim | Bike | Run | Overall | Division Rank | Gender Rank | Overall Rank | T1 | T2 |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | 
 | int | string | string | string | string | string | string | string | string | string | string | string | string | string | 
 
-I continued cleaning my data by eliminating athletes who did not finish race events and were therefore disqualified. Resulting cleaned data:
+I continued cleaning my data by eliminating athletes who did not finish race events and were therefore disqualified as well as the BIB column. Resulting cleaned data and datatypes:
 
 | Name | Country | Gender | Division | Swim | Bike | Run | Overall | Division Rank | Gender Rank | Overall Rank | T1 | T2 |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | 
@@ -33,7 +33,7 @@ I continued cleaning my data by eliminating athletes who did not finish race eve
 
 # Exploratory Data Analysis
 
-My first question was, do athletes have significantly different event split times based on their gender? Below are scatter plots for pro athletes on the left, and all amateurs on the right, by event type.
+My initial question: do athletes have significantly different event split times based on their gender? Below are scatter plots for pro athletes on the left, and all amateurs on the right, by event type.
 
 <img src="images/image1.png" alt="raw" width=50% height=50%/><img src="images/image1_.png" alt="raw" width=50% height=50%/>
 <br>
