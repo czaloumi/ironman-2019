@@ -1,28 +1,3 @@
-# Plots gender rank 
-
-def plot_genders_rank(sport, df1=fem_pro, df2=male_pro):
-    xf = df1['Division Rank']
-    yf = df1[sport]
-    xm = df2['Division Rank']
-    ym = df2[sport]
-
-    fig, ax = plt.subplots(figsize=(10,6))
-    ax.scatter(xf, yf, c='pink')
-    ax.scatter(xm, ym)
-
-    ax.set_title(f'{sport} Times by Ranking')
-    ax.set_xlabel('Division Rank')
-    ax.set_ylabel(f'{sport} Time (minutes)')
-
-    ax.axvline(1, c='pink', linestyle="--")
-    ax.axvline(xf.max(), c='pink', linestyle="--")
-    ax.axvline(1, c='grey', linestyle="--")
-    ax.axvline(xm.max(), c='grey', linestyle="--")
-    return fig, ax
-
-
-
-
 # Plot pro 90th Percentiles with 95% CI
 
 def plot_pro_90(sport, df1=fem_pro, df2=male_pro):

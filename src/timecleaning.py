@@ -5,7 +5,7 @@ import pdb
 
 class TimeDateToMinutes(object):
     '''
-    Converts timedate columns to timedelta to seconds to minutes.
+    Converts timedate columns -> timedelta -> seconds -> minutes.
     '''
     
     def __init__(self, df, col1):
