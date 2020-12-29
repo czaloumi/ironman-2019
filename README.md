@@ -12,19 +12,13 @@
 
 The triathlon is arguably one of the most extreme and mentally taxing endurance sport competitions. Athletes train for years to complete the one-day competition consisting of a 2.4-mile (3.86 km) swim, a 112-mile (180.25 km) bicycle ride and a marathon 26.22-mile (42.20 km) run, raced in that order. Because a traithlon has three separate endurance sports, it begs the question, what comprises a strong Ironman athlete?
 
-Every year since 1978, the World's craziest endurance athletes compete in the Kona Ironman World Championship (2020 being a COVID-exception). My goal is to explore the 2019 Ironman World Championship Results to determine which up and coming athletes sponsors should target and whether athletes with specific strengths are more likely to perform well in an Ironman triathlon.
+Every year since 1978, the World's top (craziest) endurance athletes compete in the Kona Ironman World Championship (2020 being a COVID-exception). My goal is to explore the 2019 Ironman World Championship Results to determine which up and coming athletes sponsors should target and whether athletes with specific strengths are more likely to perform well in an Ironman triathlon.
 
 # Data
 
-I used a Kaggle dataset of the 2019 Ironman World Championship Results, link in references. Rows are entries by athlete and include the country they are representing, their category (Professional or Age Group), their overall placing, finish time, and swim / T1 / bike / T2 / run splits. Dataset originally consisted of 14 columns and 3,045 rows or observations/athletes.
+I used a Kaggle dataset of the 2019 Ironman World Championship Results, which is linked in references. Rows are entries by athlete and include the country they are representing, their category (Professional or Age Group), their overall placing, finish time, and swim / T1 / bike / T2 / run splits. The dataset originally consisted of 14 columns and 3,045 rows or athletes.
 
-All of the time categories and rankings were in string format. My first goal was formatting the event times to a time value or float: i.e. convert string format of 'datetime' to minutes. I then cast the rank columns to integers. Original columns and corresponding datatypes:
-
-| BIB | Name | Country | Gender | Division | Swim | Bike | Run | Overall | Division Rank | Gender Rank | Overall Rank | T1 | T2 |
-| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | 
-| int | string | string | string | string | string | string | string | string | string | string | string | string | string | 
-
-I continued cleaning my data by eliminating athletes who did not finish race events and were therefore disqualified as well as the BIB column. Resulting cleaned data and datatypes:
+All of the time categories and rankings were in string format. I formatted the event times to a float: i.e. converted string format of 'datetime' to minutes. I then cast the rank columns to integers. I continued cleaning my data by eliminating athletes who did not finish race events and were therefore disqualified as well as the BIB column. Resulting cleaned data and datatypes:
 
 | Name | Country | Gender | Division | Swim | Bike | Run | Overall | Division Rank | Gender Rank | Overall Rank | T1 | T2 |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | 
@@ -33,19 +27,12 @@ I continued cleaning my data by eliminating athletes who did not finish race eve
 
 # Exploratory Data Analysis
 
-My initial question: do athletes have significantly different event split times based on their gender? Below are scatter plots for pro athletes on the left, and all amateurs on the right, by event type.
+My initial question: do ironman athletes have significantly different event times based on their gender? Below are scatter plots for pro athletes and amateurs
 
-<img src="images/image1.png" alt="raw" width=50% height=50%/><img src="images/image1_.png" alt="raw" width=50% height=50%/>
+<img src="images/pro-29-Dec-2020.png" alt="raw" width=50% height=50%/>
 <br>
 
-<img src="images/image2.png" alt="raw" width=50% height=50%/><img src="images/image2_.png" alt="raw" width=50% height=50%/>
-<br>
-
-<img src="images/image3.png" alt="raw" width=50% height=50%/><img src="images/image3_.png" alt="raw" width=50% height=50%/>
-<br>
-
-<img src="images/image4.png" alt="raw" width=50% height=50%/><img src="images/image4_.png" alt="raw" width=50% height=50%/>
-<br>
+<img src="images/amateur-29-Dec-2020.png" alt="raw" width=50% height=50%/>
 
 On average, do men race faster than women? Eyeing the scatter plots above, it would certainly seem so. To be certain, I conducted a two-sample, unpaired t-test on the pros and amateurs. My t-test states a null and alternative hypothesis as follows:
 
