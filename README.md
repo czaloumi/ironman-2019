@@ -27,7 +27,7 @@ All of the time categories and rankings were in string format. I formatted the e
 
 # Exploratory Data Analysis
 
-My initial question: do ironman athletes have significantly different event times based on their gender? Below are scatter plots for pro athletes and amateurs
+My initial question: do ironman athletes have significantly different event times based on their gender? Below are scatter plots of event times for pro athletes and amateurs by gender.
 
 <img src="images/pro-29-Dec-2020.png"/>
 <br>
