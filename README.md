@@ -38,7 +38,7 @@ On average, do men race faster than women? Eyeing the scatter plots above, it wo
 
 <img src="images/mpro-fpro-29-Dec-2020.png" width=80% height=80%/>
 
-To be certain, I conducted a two-sample, unpaired t-test on the pros and amateurs. My t-test states a null and alternative hypothesis as follows:
+The histograms do not contain 0 (for the most part) so we can conclude that there is a statistically significant difference in pro triathlon times based on gender. To be certain, I conducted a two-sample, unpaired t-test on the pros and amateurs. My t-test states a null and alternative hypothesis as follows:
 
 * Null hypothesis: men and women mean racetimes are the same.
 
