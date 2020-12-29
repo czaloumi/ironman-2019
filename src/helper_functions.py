@@ -15,10 +15,9 @@ def times(df, sport):
     -------
         np.array of randomly chosen time entries in seconds
     '''
-    l = df[sport]
-    return np.random.choice(df[sport], size=len(l), replace=True)
+    return np.random.choice(df[sport], size=len(df[sport]), replace=True)
 
-def bootstrap_statistic(df, sport, samples, statistic):
+def bootstrap_statistic(df, sport, num_samps, statistic):
     '''
     Function generates an array of bootstrapped statistics
     
@@ -26,7 +25,7 @@ def bootstrap_statistic(df, sport, samples, statistic):
     ----------
         df: dataFrame 
         sport: string: 'Swim', 'Bike', 'Run', or 'Overall'
-        samples: int: # of samples desired
+        num_samps: int: # of samples desired
         statistic: string: statistic to calculate on sample i.e. np.median, np.var, np.std
     
     RETURNS
@@ -34,10 +33,21 @@ def bootstrap_statistic(df, sport, samples, statistic):
         statistics: list of statistic
     '''
     statistics = []
-    for i in range(samples):
+    for i in range(num_samps):
             samp = times(df, sport)
             statistics.append(statistic(samp))
     return statistics
+
+def bootstrap_difference(df, sport, div1, div2, num_samps, statistic):
+    df1 = df[df['Division'] == div1]
+    df2 = df[df['Division'] == div2]
+
+    samp1 = bootstrap_statistic(df1, sport, num_samps, statistic)
+    samp2 = bootstrap_statistic(df2, sport, num_samps, statistic)
+
+    stats = []
+    stats.append(np.array(samp1) - np.array(samp2))
+    return stats
 
 def bootstrap_percentile(df, sport, samples, percent, statistic=np.percentile):
     '''
@@ -189,3 +199,28 @@ def plot_gender_ranks(axs, df, division='Pro'):
         ax.set_ylabel(f'{time} Time (minutes)')
     
     return ax
+
+def plot_hist_stats(ax, df, sport, div1, div2, num_samps, statistic):
+    '''
+    Function to plot difference in bootstrapped sample statistics.
+
+    PARAMETERS
+    ----------
+        ax: axes
+        df: dataframe
+        sport: string of event ex.) 'Swim', 'T1', 'Bike', 'T2', 'Run', 'Overall'
+        div1: string of division/agegroup
+        div2: string of second division/agegroup
+        num_samps: number of bootstrapped statistics
+        statistic: statistic in question ex.) np.mean
+    
+    RETURNS
+    -------
+        ax
+    '''
+    stat_difference = bootstrap_difference(df, sport, div1, div2, num_samps, statistic)
+
+    ax.hist(stat_difference, bins=50)
+    ax.set_xlabel(f'{div1} - {div2} Average {sport} Times')
+    ax.set_ylabel('Frequency')
+    ax.set_title(f'{sport}')
