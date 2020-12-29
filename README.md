@@ -36,7 +36,7 @@ My initial question: do ironman athletes have significantly different event time
 
 On average, do men race faster than women? Eyeing the scatter plots above, it would certainly seem so. Generating bootstrapped samples from the professional race times and plotting the difference in their averages, we can visualize the mean difference in professional gender race time below.
 
-<img src="images/mpro-fpro-29-Dec-2020.png" width=75% height=75%/>
+<img src="images/mpro-fpro-29-Dec-2020.png"/>
 
 To be certain, I conducted a two-sample, unpaired t-test on the pros and amateurs. My t-test states a null and alternative hypothesis as follows:
 
