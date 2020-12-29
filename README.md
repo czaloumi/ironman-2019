@@ -34,7 +34,11 @@ My initial question: do ironman athletes have significantly different event time
 
 <img src="images/amateur-29-Dec-2020.png"/>
 
-On average, do men race faster than women? Eyeing the scatter plots above, it would certainly seem so. To be certain, I conducted a two-sample, unpaired t-test on the pros and amateurs. My t-test states a null and alternative hypothesis as follows:
+On average, do men race faster than women? Eyeing the scatter plots above, it would certainly seem so. Generating bootstrapped samples from the professional race times and plotting the difference in their averages, we can visualize the mean difference in professional gender race time below.
+
+<img src="images/mpro-fpro-29-Dec-2020.png"/>
+
+To be certain, I conducted a two-sample, unpaired t-test on the pros and amateurs. My t-test states a null and alternative hypothesis as follows:
 
 * Null hypothesis: men and women mean racetimes are the same.
 
@@ -47,6 +51,8 @@ The very small p-value allows us to reject the null hypothesis in favor of the a
         Amateur t-test statistic: -13.63, Amateur p-value: 3.889330523969423e-39
 
 The amateur race times give us stronger reason to reject the null hypothesis and state that on average, male amateur triathletes compete faster than female amateur triathletes.
+
+
 
 Next I plotted correlation heatmaps using the seaborn package to see what correlation split times have with division ranking. Again, we have the pro division on the left, and amateurs on the right.
 
