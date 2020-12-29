@@ -44,15 +44,17 @@ To be certain, I conducted a two-sample, unpaired t-test on the pros and amateur
 
 * Alternative hypothesis: men and women mean racetimes are different, meaning one gender races faster than the other.
 
-        Pro t-test statistic: -7.76, Pro p-value: 5.156855215220441e-10
+        Pro t-test statistic: -7.76, Pro p-value: 0.0
 
-The very small p-value allows us to reject the null hypothesis in favor of the alternative hypothesis. Therefore we can reason that pro male triathletes, on average, race faster than pro women triathletes. We can run a similar test on the amateur gender groups:
+The large, negative t-test statistic value means there is a very big difference between the gender's mean overall times. The very small p-value allows us to reject the null hypothesis in favor of the alternative hypothesis. Therefore we can reason that pro male triathletes, on average, race faster than pro women triathletes. 
 
-        Amateur t-test statistic: -13.63, Amateur p-value: 3.889330523969423e-39
+We can run a similar test on the amateur gender groups:
 
-The amateur race times give us stronger reason to reject the null hypothesis and state that on average, male amateur triathletes compete faster than female amateur triathletes.
+        Amateur t-test statistic: 0.45, Amateur p-value: 0.65
 
+The amateur race times yield a less significant p-value therefore we cannot reject the null hypothesis. Amateur male and female triathletes have similar racetimes, on average.
 
+It's important to note that by "amateur" we are referring to anyone who is not in the professional division. This bucket is sensitive to outliers.
 
 Next I plotted correlation heatmaps using the seaborn package to see what correlation split times have with division ranking. Again, we have the pro division on the left, and amateurs on the right.
 
