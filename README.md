@@ -4,7 +4,7 @@
 
 #### Author: Chelsea Zaloumis
 #### Galvanize DSI Capstone 1
-*Last update: 7/20/2020*
+*Last update: 12/28/2020*
 
 ![title](images/WCFinish-r.jpeg)
 
