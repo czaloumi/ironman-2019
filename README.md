@@ -72,7 +72,7 @@ The following correlation heatmaps allow us to view correlations between event t
 
 # Up & Coming Athletes
 
-Of the amateurs, who's racing as fast as the pros and which amateur athletes should sponsors sign? To answer this, I bootstrapped the 90th percentile of pros in both genders and used a 95% confidence interval to determine the "slower" pros in event times.
+Of the amateurs, who's racing as fast as the pros and therefore which amateur athletes should sponsors focus on? To answer this, I bootstrapped the 90th percentile of professionals in both genders and used a 95% confidence interval to determine the "slow" pros. Similarly, I bootstrapped the 10th percentile amateurs to determine a confidence interval around the "fast" amateurs.
 
 
 | Event | Gender | 95% CI on 90th Percentile (min) | % Amateurs in 95% CI |
@@ -89,13 +89,13 @@ Of the amateurs, who's racing as fast as the pros and which amateur athletes sho
 
 I visualized this data with the following plots of bootstrapped top performing (10th percentile) amateurs with the pro's 90th percentiles (with 95% confidence of course).
 
-![amateurswim10thpro90th](images/amateur10thswimpro90th.png)
+![amateurswim10thpro90th](images/swim_comparison.png)
 
-![amateurswim10thpro90th](images/amateur10thbikepro90th.png)
+![amateurswim10thpro90th](images/bike_comparison.png)
 
-![amateurswim10thpro90th](images/amateur10thrunpro90th.png)
+![amateurswim10thpro90th](images/run_comparison.png)
 
-![amateurswim10thpro90th](images/amateur10thoverallpro90th.png)
+![amateurswim10thpro90th](images/overall_comparison.png)
 
 The top agegroupers (amateurs) are listed here by gender. After researching, I found many of these athletes were top competitors and pro at one point, or hold agegroup championships already!
 
