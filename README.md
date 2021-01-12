@@ -89,13 +89,13 @@ Of the amateurs, who's racing as fast as the pros and therefore which amateur at
 
 I visualized this data with the following plots of bootstrapped top performing (10th percentile) amateurs with the pro's 90th percentiles (with 95% confidence of course).
 
-![amateurswim10thpro90th](images/swim_comparison.png)
+![amateurswim10thpro90th](images/Swim_comparison.png)
 
-![amateurswim10thpro90th](images/bike_comparison.png)
+![amateurswim10thpro90th](images/Bike_comparison.png)
 
-![amateurswim10thpro90th](images/run_comparison.png)
+![amateurswim10thpro90th](images/Run_comparison.png)
 
-![amateurswim10thpro90th](images/overall_comparison.png)
+![amateurswim10thpro90th](images/Overall_comparison.png)
 
 The top agegroupers (amateurs) are listed here by gender. After researching, I found many of these athletes were top competitors and pro at one point, or hold agegroup championships already!
 
