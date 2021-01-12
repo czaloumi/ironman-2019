@@ -60,15 +60,15 @@ The following correlation heatmaps allow us to view correlations between event t
 <img src="images/proheatmap.png" alt="raw" width=50% height=50%/><img src="images/amateurheatmap.png" alt="raw" width=50% height=50%/>
 <br>
 
-  * T2 and run times have the greatest correlations of all the events with how pros rank.
-  * Therefore pro athletes need to practice their transition from bike to running as well as perform their best in running to rank higher. 
+  * T2 and run times have the greatest correlations of all the events with professional division rank.
+        * Therefore pro athletes need to practice their transition from bike to running as well as perform their best in running to rank higher. 
 
 
-  * Swim has the lowest correlation (although still correlated) than the other events, therefore swim times do not have as big affect on how an athlete ranks.Athletes should practice the other sports and transitions if they want to rank higher.
+  * Swim has the lowest correlation than the other events, therefore swim times do not have as big affect on how an athlete ranks. 
   * Both transitions for amateurs are very important to practice as they hold the same correlation as the run event with rank.
 
 
-  * Both heatmaps include a Bool_Gender column where female athletes result in True and male in False. The negative correlation in both heatmaps supports evidence from the previous scatter plots and t-tests that female athletes race slower and rank lower than male athletes, on average.
+  * The negative correlation in both heatmaps' Gender columns supports evidence from the previous scatter plots and t-tests that female athletes race slower and rank lower than male athletes, on average.
 
 # Up & Coming Athletes
 
