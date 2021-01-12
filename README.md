@@ -99,7 +99,7 @@ I visualized this data with the following plots of bootstrapped top performing (
 
 The top agegroupers (amateurs) are listed here by gender. After researching, I found many of these athletes were top competitors and pro at one point, or hold agegroup championships already!
 
-<img src="images/sponsorthesewomen.png" alt="raw" width=30% height=30%/><img src="images/sponsorthesemen.png" alt="raw" width=30% height=30%/>
+<img src="images/top_10f_amateurs.png" alt="raw" width=30% height=30%/><img src="images/top_10m_amateurs.png" alt="raw" width=30% height=30%/>
 <br>
 
 # What type of athlete performs well in an Ironman Triathlon?
