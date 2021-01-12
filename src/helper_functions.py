@@ -70,6 +70,100 @@ def bootstrap_percentile(df, sport, samples, percent, statistic=np.percentile):
         statistics.append(statistic(samp, percent))
     return statistics
 
+def plot_percentile(sport, df, division, percentile):
+    '''
+    Function plots percentiles of athletes for a given sport by gender.
+        Note: 90th percentile are SLOWER athletes! 10th percentile are FAST athletes.
+    
+    PARAMETERS
+    ----------
+        sport: string; 'Swim', 'T1', Run', 'T2', 'Bike', or 'Overall'
+        df: pandas dataframe
+        percentile: int; 90 = 90th percentile, 95 = 95th percentile
+        
+    RETURNS
+    -------
+        Plot of sport time vs. bootstrapped samples
+        CIf: confidence interval list containing lower and upper bounds for female athletes
+        CIm: confidence interval list containing lower and upper bounds for male athletes
+    '''
+    # Separate genders
+    fem_df = df[df['Division']==f'F{division}']
+    male_df = df[df['Division']==f'M{division}']
+    
+    # Generate bootstrap percentiles
+    fem_percentiles = bootstrap_percentile(fem_df, sport, 1000, percentile)
+    male_percentiles = bootstrap_percentile(male_df, sport, 1000, percentile)
+    
+    # Confidence intervals
+    CIf = []
+    CIf.append(np.percentile(fem_percentiles, ((100-percentile)/2)))
+    CIf.append(np.percentile(fem_percentiles, (percentile + (100-percentile)/2)))
+    
+    CIm = []
+    CIm.append(np.percentile(male_percentiles, ((100-percentile)/2)))
+    CIm.append(np.percentile(male_percentiles, (percentile + (100-percentile)/2)))
+    
+    # Plot
+    fig, ax = plt.subplots(1, figsize=(12,4))
+    ax.hist(fem_percentiles, density=True, color='pink', alpha=0.8, label=f'Female {division} {sport} {percentile}th Percentile')
+    ax.hist(male_percentiles, density=True, color='b', alpha=0.7, label=f'Male {division} {sport} {percentile}th Percentile')
+    ax.legend()
+
+    ax.set_title(f'{division} {sport} {percentile}th Percentiles', fontsize=20)
+    ax.set_xlabel(f'{sport} Time (minutes)', fontsize=15)
+    ax.set_ylabel(f'Frequency of {percentile}th Percentiles', fontsize=10)
+    
+    ax.axvline(CIf[0], c='pink', linestyle="--")
+    ax.axvline(CIf[1], c='pink', linestyle="--")
+    ax.axvline(CIm[0], c='grey', linestyle="--")
+    ax.axvline(CIm[1], c='grey', linestyle="--")
+    
+    print(f'Female {division} {sport} Times Bootstrap CI {percentile}th Percentile (minutes): [{round(CIf[0], 2)}, {round(CIf[1],2)}]')
+    print(f'Male {division} {sport} Times Bootstrap CI{percentile}th Percentile (minutes): [{round(CIm[0], 2)}, {round(CIm[1],2)}]')
+
+    return fig, ax, CIf, CIm
+
+def plot_fastamateurs(sport, df, samples=1000):
+    '''
+    Funciton plots 10th percentile amateurs for a given sport 
+    and 90th percentile professional athletes.
+        Note: 10th percentile = fast & 90th percentile = slow
+        
+    PARAMETERS
+    ----------
+        sport: string; 'Swim', 'T1', 'Run', 'T2', 'Bike', 'Overall'
+        df: pandas dataframe
+        samples: int; number of bootstrapped samples to generate
+    
+    RETUNRS
+    -------
+        plot of 10th percentile amateurs and 90th percentile CI for slow professionals
+        plot of 90th percentile pros
+    '''
+    amateur_df = df[(df['Division'] != 'FPRO') & (df['Division'] != 'MPRO')]
+    female_df = amateur_df[amateur_df['Division'].str.contains('F')]
+    male_df = amateur_df[amateur_df['Division'].str.contains('M')]
+    
+    fast_fem_amateurs = bootstrap_percentile(female_df, sport, samples, 10, statistic=np.percentile)
+    fast_male_amateurs = bootstrap_percentile(male_df, sport, samples, 10, statistic=np.percentile)
+    
+    fig, _, pro_CIf, pro_CIm = plot_percentile(sport, df, 'PRO', percentile=90)
+    plt.close(fig)
+    
+    fig, ax = plt.subplots(figsize=(12,4))
+    ax.hist(fast_fem_amateurs, color='pink', label='F Amateurs')
+    ax.hist(fast_male_amateurs, color='b', alpha=0.5, label='M Amateurs')
+    ax.axvline(pro_CIf[0], c='r', linestyle='--', label='FPRO 90th Percentile')
+    ax.axvline(pro_CIf[1], c='r', linestyle='--')
+    ax.axvline(pro_CIm[0], c='black', linestyle='--', label='MPRO 90th Percentile')
+    ax.axvline(pro_CIm[1], c='black', linestyle='--')
+    ax.set_title(f'Amateur {sport} 10th Percentiles', fontsize=20)
+    ax.set_xlabel(f'{sport} Time (minutes)', fontsize=15)
+    ax.set_ylabel(f'Frequency', fontsize=10)
+    ax.legend()
+    return ax
+
 def rankvsevent(col1, normalized_sport):
     '''
     Plots athlete's Overall Rank vs. sport time in a bar plot
@@ -166,8 +260,8 @@ def plot_gender_ranks(axs, df, division='Pro'):
     -------
         ax
     '''
-    female = df[df['Gender'] == 'Female']
-    male = df[df['Gender'] == 'Male']
+    female = df[df['Gender'] == 0]
+    male = df[df['Gender'] == 1]
     
     if division == 'Pro':
         female_df = female[female['Division'] == 'FPRO'].copy()
