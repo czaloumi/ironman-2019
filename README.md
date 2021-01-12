@@ -97,7 +97,7 @@ I visualized this data with the following plots of bootstrapped top performing (
 
 ![amateurswim10thpro90th](images/overall_comparison.png)
 
-The top agegroupers (amateurs) are listed here by gender. After researching, I found many of these athletes were top competitors and pro at one point, or hold agegroup championships already!
+And just who are these fast amateurs? After researching the lists below, I found that most were previously professional athletes.
 
 <img src="images/top_10f_amateurs.png" alt="raw"/><img src="images/top_10m_amateurs.png" alt="raw"/>
 <br>
