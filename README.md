@@ -72,19 +72,19 @@ The following correlation heatmaps allow us to view correlations between event t
 
 # Up & Coming Athletes
 
-Of the amateurs, who's racing as fast as the pros and therefore which amateur athletes should sponsors focus on? To answer this, I bootstrapped the 90th percentile of professionals in both genders and used a 95% confidence interval to determine the "slow" pros. Similarly, I bootstrapped the 10th percentile amateurs to determine a confidence interval around the "fast" amateurs.
+Of the amateurs, who's racing as fast as the pros and therefore which amateur athletes should sponsors focus on? To answer this, I bootstrapped the 90th percentile of professionals in both genders and used a 95% confidence interval to determine the "slow" pros. Similarly, I bootstrapped the 10th percentile amateurs to only plot the "fast" amateurs.
 
 
-| Event | Gender | 95% CI on 90th Percentile (min) | % Amateurs in 95% CI |
+<center>| Event | Gender | 95% CI on 90th Percentile (min) | % Amateurs in 95% CI |
 | ---- | ---- | :----: | :----: |
-| Swim | Female | [62.75, 75.4] | 48.52% |
-| Swim | Male | [52.38, 57.83] | 8.28% |
-| Bike | Female | [310.11, 333.25] | 11.69% |
+| Swim | Female | [63.83, 75.4] | 48.52% |
+| Swim | Male | [52.42, 57.83] | 8.28% |
+| Bike | Female | [310.57, 331.46] | 11.69% |
 | Bike | Male | [273.95, 283.17] | 1.74% |
-| Run | Female | [211.39, 297.6] | 72.43% |
-| Run | Male | [193.28, 221.37] | 37.09% |
-| Overall | Female | [585.6, 688.37] | 36.47% |
-| Overall | Male | [521.32, 548.9] | 2.74% |
+| Run | Female | [213.72, 297.6] | 72.43% |
+| Run | Male | [193.7, 216.03] | 37.09% |
+| Overall | Female | [586.72, 688.37] | 36.47% |
+| Overall | Male | [524.48, 545.48] | 2.74% |</center>
 
 
 I visualized this data with the following plots of bootstrapped top performing (10th percentile) amateurs with the pro's 90th percentiles (with 95% confidence of course).
