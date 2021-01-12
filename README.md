@@ -75,7 +75,7 @@ The following correlation heatmaps allow us to view correlations between event t
 Of the amateurs, who's racing as fast as the pros and therefore which amateur athletes should sponsors focus on? To answer this, I bootstrapped the 90th percentile of professionals in both genders and used a 95% confidence interval to determine the "slow" pros. Similarly, I bootstrapped the 10th percentile amateurs to only plot the "fast" amateurs.
 
 
-<center>| Event | Gender | 95% CI on 90th Percentile (min) | % Amateurs in 95% CI |
+| Event | Gender | 95% CI on 90th Percentile (min) | % Amateurs in 95% CI |
 | ---- | ---- | :----: | :----: |
 | Swim | Female | [63.83, 75.4] | 48.52% |
 | Swim | Male | [52.42, 57.83] | 8.28% |
@@ -84,7 +84,7 @@ Of the amateurs, who's racing as fast as the pros and therefore which amateur at
 | Run | Female | [213.72, 297.6] | 72.43% |
 | Run | Male | [193.7, 216.03] | 37.09% |
 | Overall | Female | [586.72, 688.37] | 36.47% |
-| Overall | Male | [524.48, 545.48] | 2.74% |</center>
+| Overall | Male | [524.48, 545.48] | 2.74% |
 
 
 I visualized this data with the following plots of bootstrapped top performing (10th percentile) amateurs with the pro's 90th percentiles (with 95% confidence of course).
