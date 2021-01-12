@@ -55,9 +55,9 @@ The amateur race times yield a less significant p-value therefore we cannot reje
 
 It's important to note that by "amateur" we are referring to anyone who is not in the professional division. This bucket is sensitive to outliers.
 
-The following correlation heatmaps allow us to view correlations between event times and athlete division ranking. The pro division on the left, and amateurs on the right.
+The following correlation heatmaps allow us to view correlations between event times and athlete division ranking.
 
-<img src="images/heatmap2.png" alt="raw" width=50% height=50%/><img src="images/heatmap1.png" alt="raw" width=50% height=50%/>
+<img src="images/proheatmap.png" alt="raw" width=50% height=50%/><img src="images/amateurheatmap.png" alt="raw" width=50% height=50%/>
 <br>
 
   * T2 and run times have the greatest correlations of all the events with how pros rank.
