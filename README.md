@@ -37,7 +37,7 @@ On average, do men race faster than women? Eyeing the scatter plots above, it wo
 
 <img src="images/mpro-fpro-29-Dec-2020.png" width=80% height=80%/>
 
-The histograms do not contain 0 (for the most part) so we can conclude that there is a statistically significant difference in pro triathlon times based on gender. To be certain, I conducted a two-sample, unpaired t-test on the pros and amateurs. My t-test states a null and alternative hypothesis as follows:
+The histograms do not contain 0 so we can conclude that there is a statistically significant difference in pro triathlon times based on gender. I conducted a two-sample, unpaired t-test on the pros and amateurs. My t-test states a null and alternative hypothesis as follows:
 
 * Null hypothesis: men and women mean racetimes are the same.
 
@@ -45,17 +45,17 @@ The histograms do not contain 0 (for the most part) so we can conclude that ther
 
         Pro t-test statistic: -7.76, Pro p-value: 0.0
 
-The large, negative t-test statistic value means there is a very big difference between the gender's mean overall times. The very small p-value allows us to reject the null hypothesis in favor of the alternative hypothesis. Therefore we can reason that pro male triathletes, on average, race faster than pro women triathletes. 
+The significant p-value allows us to reject the null hypothesis in favor of the alternative hypothesis. Therefore we can reason that **pro male triathletes, on average, race faster than pro female triathletes.**
 
 We can run a similar test on the amateur gender groups:
 
         Amateur t-test statistic: 0.45, Amateur p-value: 0.65
 
-The amateur race times yield a less significant p-value therefore we cannot reject the null hypothesis. Amateur male and female triathletes have similar racetimes, on average.
+The amateur race times yield a less significant p-value therefore we cannot reject the null hypothesis. **Amateur male and female triathletes have similar racetimes, on average.**
 
 It's important to note that by "amateur" we are referring to anyone who is not in the professional division. This bucket is sensitive to outliers.
 
-Next I plotted correlation heatmaps using the seaborn package to see what correlation split times have with division ranking. Again, we have the pro division on the left, and amateurs on the right.
+The following correlation heatmaps allow us to view correlations between event times and athlete division ranking. The pro division on the left, and amateurs on the right.
 
 <img src="images/heatmap2.png" alt="raw" width=50% height=50%/><img src="images/heatmap1.png" alt="raw" width=50% height=50%/>
 <br>
