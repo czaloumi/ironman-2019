@@ -115,37 +115,31 @@ We can look at each division's consistency as well to see what agegroup holds th
 
 ![divconsistency](images/divisionconsistency.png)
 
-Eyeing this plot, male pros and males 30-39 perform the most consistently well in their respective divisions, and overall. This supports previous knowledge (not explored in this study) claiming that 30-39 is the prime age for triathletes because of how long it takes to train your body to compete in long endurance races.
+Eyeing this plot, male pros and males 30-39 perform the most consistently well in their respective divisions and overall. This supports previous knowledge (not explored in this study) claiming that 30-39 is the prime age for triathletes on account of how long it takes to train your body to compete in endurance races.
 
-Next I looked at how specialized an athlete is in a given event by defining their event specializations as the difference of the event in question from the mean of the other two events. I then plotted the pro's specializations and their rank to give us a better idea on which events the pros focus on to become the best.
+Next I looked at how specialized an athlete is in a given event by defining their event specializations.  An event's specialization is equal to difference of the event in question from the mean of the other two events. The plots below allow us to visualize how specialized the pro traithletes are by gender.
 
 ![prospec](images/pro_specialize.png)
 
 Observations:
-  * I confirmed the original correlation matrix findings that show swim does not correlate as strongly with ranking and therefore should not be a focus in training.
-  * Running and biking are more so correlated with athlete rank.
+  * Swim has a dispersed specialization amongst the pros.
   * Male pros are incredibly specialized bikers and less so runners.
   * Female pros specialize in running over biking.
   * Specializing in both running and biking lead to a higher rank because of the events' percentages of overall time.
+  
+The following results are for a two-sample, unpaired t-test with a null and alternative hypothesis as follows:
 
-I reaffirmed these observations by plotting specialization by rank for each gender's division:
+* **Null hypothesis**: Athletes who specialize in a certain event race just as fast as the athletes who do not specialize.
 
-<img src="images/femagegroupspecialization.png" alt="raw" width=50% height=50%/><img src="images/maleagegroupspecialization.png" alt="raw" width=50% height=50%/>
-<br>
-
-To test these observations, I divided my dataframe into three separate dataframes, each with only the highly specialized athletes in the respective three events. I conducted a two-sample, unpaired t-test of each dataframe against dataframes with the respective event's low specialize scores. My t-test states a null and alternative hypothesis as follows:
-
-Null hypothesis: Athletes who specialize in a certain event do not have greater or lesser overall times than the mean of those who do not specialize.
-
-Alternative hypothesis: Athletes who specialize in a certain event have overall competition times that are greater, or smaller than the mean of overall times of athletes who do not specialize.
+* **Alternative hypothesis**: Athletes who specialize in a certain event have overall competition times that are greater, or smaller than the mean of overall times of athletes who do not specialize.
 
 | Event | P-value | T-test Statistic |
 | ---- | ---- | :----: |
-| Swim | 9.508630443559785e-14 | 7.5 |
-| Bike | 4.492361692476316e-12 | -6.69 |
-| Run | 0.0009262274506303615 | -3.32 |
+| Swim | 0.0 | 7.5 |
+| Bike | 0.0 | -6.69 |
+| Run | 0.0 | -3.32 |
 
-The very small p-values indicate we accept our alternative hypothesis that athletes who specialize in at least one sport have overall race times that are greater or less than the non-specializing athlete's overall mean times. Swim specializing athletes have greater overall times than the non-specializing swim athlete overall race time average. Bike and run specializing athletes finish with an overall time that is faster than the mean overall time of their non-specializing competitors.
+The significant p-values indicate we reject the null hypothesis and accept our alternative hypothesis that athletes who specialize in at least one sport have overall race times that are greater or less than the non-specializing athlete's overall mean times. Swim specializing athletes have greater overall times than the non-specializing swim athlete overall race time average. Bike and run specializing athletes finish with an overall time that is faster than the mean overall time of their non-specializing competitors.
 
 # Future Direction
 
