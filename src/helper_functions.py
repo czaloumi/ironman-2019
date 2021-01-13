@@ -186,15 +186,9 @@ def rankvsevent(col1, normalized_sport):
 def consistency(row):
     '''
     Returns difference from standardized mean
-
-    PARAMETERS
-    ----------
-    
-    RETURNS
-    -------
-        
     '''
-    return max(row.Norm_Swim, row.Norm_Run, row.Norm_Bike) - min(row.Norm_Swim, row.Norm_Run, row.Norm_Bike)
+    return max(row.Swim_Scaled, row.Run_Scaled, row.Bike_Scaled) - min(row.Swim_Scaled, row.Run_Scaled, row.Bike_Scaled)
+
 
 def specialize(row, discipline):
     '''
@@ -202,13 +196,6 @@ def specialize(row, discipline):
     Users will need to edit the function to subtract whatever Specialized Metric they are looking for
     specialize('Swim')
     disciplines = [1, 2, 3]
-
-    PARAMETERS
-    ----------
-    
-    RETURNS
-    -------
-        
     '''
     if discipline == 'Swim':
         other1 = 'Bike'
@@ -219,7 +206,48 @@ def specialize(row, discipline):
     else:
         other1 = 'Bike'
         other2 = 'Swim'
-    return row[[f'Norm_{other1}', f'Norm_{other2}']].mean() - row[f'Norm_{discipline}']
+    return row[[f'{other1}_Scaled', f'{other2}_Scaled']].mean() - row[f'{discipline}_Scaled']
+
+def plot_specialization(df, division):
+    '''
+    Function scatter plots specialization scores for Swim, BIke, and Run events
+    by athlete division rank.
+    
+    Note: function plots two separate plots per division gender.
+    
+    PARAMETERS
+    ----------
+        df: pandas dataframe
+        division: string
+    
+    RETURNS
+    -------
+        Two plots by division gender
+    '''
+    female_df = df[df['Gender'] == 0]
+    male_df = df[df['Gender'] == 1]
+    fem_div = female_df[female_df['Division'] == f'F{division}']
+    male_div = male_df[male_df['Division'] == f'M{division}']
+    gender_dfs = [male_div, fem_div]
+    
+    specialization_cols = ['Specialize_Swim', 'Specialize_Bike', 'Specialize_Run']
+    
+    fig, axs = plt.subplots(2, figsize=(12, 12))
+    for i, gender_df in enumerate(gender_dfs):
+        if i == 0:
+            axs[i].set_title(f'Male {division} Specialization')
+        else:
+            axs[i].set_title(f'Female {division} Specialization')
+
+        for col in specialization_cols:
+            axs[i].scatter(gender_df[col], gender_df['Overall Rank'], label=f'{col}')
+        axs[i].set_xlabel('Specialization Score')
+        axs[i].set_ylabel('Rank')
+        axs[i].set_xbound(-1.5, 1.5)
+        axs[0].set_ybound(-5,100)
+        axs[i].legend()
+    
+    return axs
 
 def separate_specialized(df, event, threshold):
     '''
@@ -236,8 +264,8 @@ def separate_specialized(df, event, threshold):
         spec: df of specialized athletes
         non_spec: df of non specialized athletes
     '''
-    spec = df.loc[df[f'Specialize {event}'] > threshold]
-    non_spec = df.loc[df[f'Specialize {event}'] < threshold]
+    spec = df.loc[df[f'Specialize_{event}'] > threshold]
+    non_spec = df.loc[df[f'Specialize_{event}'] < threshold]
     return spec, non_spec
 
 def plot_gender_ranks(axs, df, division='Pro'):
