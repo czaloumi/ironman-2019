@@ -31,13 +31,13 @@ A debate as old as time... do ironman athletes have significantly different even
 
 On average, do men race faster than women? Eyeing the scatter plots above, it would certainly seem so. Generating bootstrapped samples from the professional race times and plotting the difference in their averages, we can visualize the mean difference in professional gender race time below.
 
-<img src="images/mpro-fpro-13-Jan-2021.png" width=80% height=80%/>
+<center><img src="images/mpro-fpro-13-Jan-2021.png" width=80% height=80%/></center>
 
 The histograms do not contain 0 so we can conclude that there is a statistically significant difference in pro triathlon times based on gender. I conducted a two-sample, unpaired t-test on the pros and amateurs. My t-test states a null and alternative hypothesis as follows:
 
-* Null hypothesis: men and women mean racetimes are the same.
+* **Null hypothesis**: men and women mean racetimes are the same.
 
-* Alternative hypothesis: men and women mean racetimes are different, meaning one gender races faster than the other.
+* **Alternative hypothesis**: men and women mean racetimes are different, meaning one gender races faster than the other.
 
         Pro t-test statistic: -7.76, Pro p-value: 0.0
 
