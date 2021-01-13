@@ -119,11 +119,7 @@ Eyeing this plot, male pros and males 30-39 perform the most consistently well i
 
 Next I looked at how specialized an athlete is in a given event by defining their event specializations as the difference of the event in question from the mean of the other two events. I then plotted the pro's specializations and their rank to give us a better idea on which events the pros focus on to become the best.
 
-![dfexample](images/stand_spec_df_ex.png)
-
-![femprospec](images/femprospecialize.png)
-
-![maleprospec](images/maleprospecialize.png)
+![prospec](images/pro_specialize.png)
 
 Observations:
   * I confirmed the original correlation matrix findings that show swim does not correlate as strongly with ranking and therefore should not be a focus in training.
